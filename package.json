@@ -1,6 +1,6 @@
 {
-  "name": "abacus-input-helper",
-  "displayName": "ABACUS INPUT Helper",
+  "name": "abacus-input",
+  "displayName": "ABACUS INPUT",
   "description": "Intelligent completion, validation and diagnostics for ABACUS INPUT files",
   "version": "0.1.0",
   "publisher": "wxia529",
@@ -53,7 +53,7 @@
       }
     ],
     "configuration": {
-      "title": "ABACUS INPUT Helper",
+      "title": "ABACUS INPUT",
       "properties": {
         "abacusInput.completion.enabled": {
           "type": "boolean",

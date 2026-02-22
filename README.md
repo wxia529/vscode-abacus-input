@@ -1,46 +1,48 @@
-# ABACUS INPUT Helper for VSCode
+# ABACUS INPUT for VS Code
 
-A VSCode extension providing intelligent completion, validation, and diagnostics for ABACUS INPUT files.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+Intelligent completion, validation, and diagnostics for ABACUS INPUT files in Visual Studio Code.
 
 ## Features
 
-- **Intelligent Completion**: Auto-completion for all ABACUS INPUT keywords with enum value dropdowns
-- **Hover Documentation**: Display detailed documentation when hovering over keywords
-- **Validation & Diagnostics**: 
-  - Type checking for parameter values
-  - Enum value validation
-  - Numeric range validation
-  - Dependency checking between parameters
-  - Conditional warnings based on parameter combinations
-- **Syntax Highlighting**: Color-coded highlighting for keywords, values, numbers, strings, and comments
-- **Snippets**: Quick insertion of common parameter configurations
+This extension provides comprehensive support for editing ABACUS INPUT files:
+
+- **🎯 Intelligent Completion** - Context-aware keyword and value completion
+- **✅ Validation & Diagnostics** - Real-time error detection and parameter validation
+- **📖 Hover Documentation** - Instant keyword documentation on hover
+- **🎨 Syntax Highlighting** - Full syntax highlighting for INPUT files
+- **📝 Code Snippets** - Pre-defined snippets for common ABACUS parameters
+
+## Installation
+
+Install from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=wxia529.abacus-input) or search for "ABACUS INPUT" in the VS Code Extensions panel.
 
 ## Usage
 
-1. Open any `.input` or `.INPUT` file in VSCode
-2. Start typing a keyword to see completion suggestions
-3. Press `Ctrl+Space` to manually trigger completion
-4. Hover over any keyword to see its documentation
-5. Errors and warnings will be highlighted in the editor
+### Automatic Activation
 
-## Configuration
+The extension automatically activates when:
+- Opening a file named `INPUT` or `INPUT.*`
+- A file with ABACUS INPUT content is opened
 
-- `abacusInput.completion.enabled`: Enable/disable intelligent completion (default: true)
-- `abacusInput.diagnostics.enabled`: Enable/disable validation and diagnostics (default: true)
-- `abacusInput.hover.enabled`: Enable/disable hover documentation (default: true)
-- `abacusInput.dataPath`: Custom path to ABACUS JSON data files (default: bundled data)
+### Commands
 
-## Commands
+| Command | Description |
+|---------|-------------|
+| `ABACUS INPUT: Reload Data` | Reload the completion data from JSON files |
+| `ABACUS INPUT: Check Data Status` | Display current data status and statistics |
 
-- `ABACUS INPUT: Reload Data`: Reload the JSON data files without restarting VSCode
+### Configuration
+
+| Setting | Default | Description |
+|---------|---------|-------------|
+| `abacusInput.completion.enabled` | `true` | Enable intelligent completion |
+| `abacusInput.diagnostics.enabled` | `true` | Enable validation and diagnostics |
+| `abacusInput.hover.enabled` | `true` | Enable hover documentation |
+| `abacusInput.dataPath` | `""` | Custom path to ABACUS JSON data files |
 
 ## Development
-
-### Prerequisites
-
-- Node.js >= 18
-- npm >= 9
-- VSCode >= 1.74
 
 ### Build
 
@@ -55,62 +57,39 @@ npm run compile
 npm run watch
 ```
 
-### Run Tests
+### Lint
 
 ```bash
-npm test
+npm run lint
 ```
 
-### Package Extension
+### Package
 
 ```bash
 npm run package
 ```
 
-### Install Extension
-
-```bash
-code --install-extension abacus-input-helper-1.0.0.vsix
-```
-
 ## Project Structure
 
 ```
-abacus-input/
-├── src/
-│   ├── extension.ts          # Main extension entry point
-│   ├── dataProvider.ts       # JSON data loading and access
-│   ├── completionProvider.ts # Completion provider implementation
-│   ├── hoverProvider.ts      # Hover provider implementation
-│   ├── diagnosticProvider.ts # Diagnostic provider implementation
-│   └── test/
-│       ├── extension.test.ts # Unit tests
-│       └── runTest.ts        # Test runner
-├── data/
-│   ├── completion.json       # Completion items data
-│   ├── constraints.json      # Parameter constraints
-│   ├── diagnostics.json      # Diagnostic rules
-│   ├── snippets.json         # Snippet definitions
-│   └── dependencies.json     # Parameter dependencies
-├── snippets/
-│   └── abacus-input-snippets.json
-├── syntaxes/
-│   └── abacus-input.tmLanguage.json
-├── language-configuration.json
-├── package.json
-└── tsconfig.json
+vscode-abacus-input/
+├── src/                    # Extension source code
+│   ├── extension.ts        # Main extension entry point
+│   ├── completionProvider.ts
+│   ├── diagnosticProvider.ts
+│   ├── hoverProvider.ts
+│   └── dataProvider.ts
+├── syntaxes/               # TextMate grammar for syntax highlighting
+├── snippets/               # Code snippets
+├── data/                   # JSON data files for completion
+└── package.json            # Extension manifest
 ```
-
-## Data Files
-
-The extension uses JSON data files generated from ABACUS documentation:
-
-- **completion.json**: Contains all keywords with their documentation, types, and enum values
-- **constraints.json**: Defines type constraints, allowed values, and ranges for each parameter
-- **diagnostics.json**: Contains conditional diagnostic rules
-- **snippets.json**: VSCode snippet definitions
-- **dependencies.json**: Parameter dependency definitions
 
 ## License
 
-MIT
+MIT License - see [LICENSE](LICENSE) for details.
+
+## Acknowledgments
+
+- [ABACUS](https://github.com/deepmodeling/abacus-develop) - Atomic-orbital Based Ab-initio Computation at UStc
+- Data sourced from the official ABACUS documentation
