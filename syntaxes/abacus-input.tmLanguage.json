@@ -1,0 +1,121 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "ABACUS INPUT",
+  "scopeName": "source.abacus-input",
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#values"
+    },
+    {
+      "include": "#numbers"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#booleans"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.number-sign.abacus-input",
+          "match": "#.*$"
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.abacus-input",
+          "match": "^(?:suffix|calculation|esolver_type|basis_type|nbands|ecutwfc|scf_nmax|mixing_type|mixing_beta|kspacing|kpoint_grid|smearing_method|smearing_sigma|symmetry|symmetry_autoclose|relax_new|relax_nmax|relax_bfgs_init|fixed_axes|md_type|md_tstep|md_nstep|md_tfirst|deepks_out_labels|deepks_v_delta|berry_phase|out_pchg|out_wfc_norm|out_wfc_re_im|mem_saver|diago_proc|precision|restart_load|spillage_outdir|nx|ny|nz|bessel_descriptor_lmax|bessel_descriptor_rcut|bessel_descriptor_ecut|bessel_descriptor_smooth|bessel_descriptor_sigma|abs_broadening|abs_wavelen_range|aims_nbasis|ocp_set|if_separate_k|pexsi_nproc|relax_bfgs_rmax)(?=\\s|$)"
+        }
+      ]
+    },
+    "values": {
+      "patterns": [
+        {
+          "name": "variable.parameter.abacus-input",
+          "begin": "^(\\w+)\\s+",
+          "beginCaptures": {
+            "1": {
+              "name": "keyword.control.abacus-input"
+            }
+          },
+          "end": "$",
+          "patterns": [
+            {
+              "include": "#numbers"
+            },
+            {
+              "include": "#strings"
+            },
+            {
+              "include": "#booleans"
+            },
+            {
+              "include": "#comments"
+            }
+          ]
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.float.abacus-input",
+          "match": "\\b[-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?\\b"
+        },
+        {
+          "name": "constant.numeric.integer.abacus-input",
+          "match": "\\b[-+]?[0-9]+\\b"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.abacus-input",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "constant.character.escape.abacus-input",
+              "match": "\\\\."
+            }
+          ]
+        },
+        {
+          "name": "string.quoted.single.abacus-input",
+          "begin": "'",
+          "end": "'",
+          "patterns": [
+            {
+              "name": "constant.character.escape.abacus-input",
+              "match": "\\\\."
+            }
+          ]
+        }
+      ]
+    },
+    "booleans": {
+      "patterns": [
+        {
+          "name": "constant.language.boolean.true.abacus-input",
+          "match": "\\b(true|TRUE|True)\\b"
+        },
+        {
+          "name": "constant.language.boolean.false.abacus-input",
+          "match": "\\b(false|FALSE|False)\\b"
+        }
+      ]
+    }
+  }
+}

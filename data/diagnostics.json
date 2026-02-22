@@ -1,0 +1,157 @@
+[
+  {
+    "keyword": "kspacing",
+    "severity": "info",
+    "message": "Note: If gamma_only is set to be true, kspacing is invalid."
+  },
+  {
+    "keyword": "nx",
+    "severity": "info",
+    "message": "Note: You must specify all three dimensions for this setting to be used."
+  },
+  {
+    "keyword": "ny",
+    "severity": "info",
+    "message": "Note: You must specify all three dimensions for this setting to be used."
+  },
+  {
+    "keyword": "nz",
+    "severity": "info",
+    "message": "Note: You must specify all three dimensions for this setting to be used."
+  },
+  {
+    "keyword": "xc_exch_ext",
+    "severity": "info",
+    "message": "Note: 1. Solely setting this keyword will take no effect on XC functionals. One should also set `dft_functional` to corresponding functional to apply the customized parameterization. For example, if you want to use the PBE functional with customized parameters, you should set `dft_functional` to `GGA_X_PBE+GGA_C_PBE` and `xc_exch_ext` to `101 0.8040 0.2195149727645171`.\n  2. For functionals that do not have separate exchange and correlation parts, such as HSE06 whose corresponding LibXC notation is `HYB_GGA_XC_HSE06` and LibXC id is 428, you can set either `xc_exch_ext` or `xc_corr_ext` to `428 0.25 0.11 0.11` (which means 25% Hartree-Fock fraction, 0.11 as range-seperation) and leave the other one unset.\n  3. Presently this feature can only support parameterization on **one** exchange functional."
+  },
+  {
+    "keyword": "xc_corr_ext",
+    "severity": "info",
+    "message": "Note: 1. Solely setting this keyword will take no effect on XC functionals. One should also set `dft_functional` to corresponding functional to apply the customized parameterization. For example, if you want to use the PBE functional with customized parameters, you should set `dft_functional` to `GGA_X_PBE+GGA_C_PBE` and `xc_corr_ext` to `130 0.06672455060314922 0.031090690869654895034 1.0`.\n  2. For functionals that do not have separate exchange and correlation parts, such as HSE06 whose corresponding LibXC notation is `HYB_GGA_XC_HSE06` and LibXC id is 428, you can set either `xc_exch_ext` or `xc_corr_ext` to `428 0.25 0.11 0.11` (which means 25% Hartree-Fock fraction, 0.11 as range-seperation) and leave the other one unset.\n  3. Presently this feature can only support parameterization on **one** correlation functional."
+  },
+  {
+    "keyword": "fixed_axes",
+    "severity": "info",
+    "message": "Note: For VASP users, see the [ISIF correspondence table](../opt.md#fixing-cell-parameters) in the geometry optimization documentation. Both implementations now support all constraint types."
+  },
+  {
+    "keyword": "out_freq_ion",
+    "severity": "info",
+    "message": "Note: In RT-TDDFT calculations, this parameter is inactive; output frequency is instead controlled by [`out_freq_td`](#out_freq_td)—see its description for details."
+  },
+  {
+    "keyword": "out_freq_td",
+    "severity": "info",
+    "message": "Note: This parameter is **only active in RT-TDDFT mode** (`esolver_type = tddft`). It has no effect in ground-state calculations."
+  },
+  {
+    "keyword": "out_chg",
+    "severity": "info",
+    "message": "Note: In the 3.10-LTS version, the file names are SPIN1_CHG.cube and SPIN1_CHG_INI.cube, etc."
+  },
+  {
+    "keyword": "out_pot",
+    "severity": "info",
+    "message": "Note: In the 3.10-LTS version, the file names are SPIN1_POT.cube and SPIN1_POT_INI.cube, etc."
+  },
+  {
+    "keyword": "out_dmk",
+    "severity": "info",
+    "message": "Note: In the 3.10-LTS version, the parameter is named `out_dm` and the file names are SPIN1_DM and SPIN2_DM, etc."
+  },
+  {
+    "keyword": "out_dmr",
+    "severity": "info",
+    "message": "Note: In the 3.10-LTS version, the parameter is named `out_dm1`, and the file names are data-DMR-sparse_SPIN0.csr and data-DMR-sparse_SPIN1.csr, etc."
+  },
+  {
+    "keyword": "out_wfc_pw",
+    "severity": "info",
+    "message": "Note: In the 3.10-LTS version, the file names are `WAVEFUNC1.dat`, `WAVEFUNC2.dat`, etc."
+  },
+  {
+    "keyword": "out_wfc_lcao",
+    "severity": "info",
+    "message": "Note: In the 3.10-LTS version, the file names are WFC_NAO_GAMMA1_ION1.txt and WFC_NAO_K1_ION1.txt, etc."
+  },
+  {
+    "keyword": "out_mat_hs",
+    "severity": "info",
+    "message": "Note: In the 3.10-LTS version, the file names are data-0-H and data-0-S, etc."
+  },
+  {
+    "keyword": "out_mat_hs2",
+    "severity": "info",
+    "message": "Note: In the 3.10-LTS version, the file names are data-HR-sparse_SPIN0.csr and data-SR-sparse_SPIN0.csr, etc."
+  },
+  {
+    "keyword": "out_mat_tk",
+    "severity": "info",
+    "message": "Note: In the 3.10-LTS version, the file names are data-TR-sparse_SPIN0.csr and data-TR-sparse_SPIN0.csr, etc."
+  },
+  {
+    "keyword": "out_mat_r",
+    "severity": "info",
+    "message": "Note: In the 3.10-LTS version, the file name is data-rR-sparse.csr."
+  },
+  {
+    "keyword": "out_mat_t",
+    "severity": "info",
+    "message": "Note: In the 3.10-LTS version, the file name is data-TR-sparse_SPIN0.csr."
+  },
+  {
+    "keyword": "out_mat_dh",
+    "severity": "info",
+    "message": "Note: In the 3.10-LTS version, the file name is data-dHRx-sparse_SPIN0.csr and so on."
+  },
+  {
+    "keyword": "out_mat_ds",
+    "severity": "info",
+    "message": "Note: In the 3.10-LTS version, the file name is data-dSRx-sparse_SPIN0.csr and so on."
+  },
+  {
+    "keyword": "out_mat_xc",
+    "severity": "info",
+    "message": "Note: In the 3.10-LTS version, the file name is k-$k-Vxc and so on."
+  },
+  {
+    "keyword": "out_mat_xc2",
+    "severity": "info",
+    "message": "Note: In the 3.10-LTS version, the file name is Vxc_R_spin$s and so on."
+  },
+  {
+    "keyword": "rpa (Under Development Feature)",
+    "severity": "info",
+    "message": "Note: If [`symmetry`](#symmetry) is set to 1, additional files containing the necessary information for exploiting symmetry in the subsequent rpa calculation will be output:  `irreducible_sector.txt`, `symrot_k.txt` and `symrot_R.txt`"
+  },
+  {
+    "keyword": "deepks_out_labels",
+    "severity": "info",
+    "message": "Note: When `deepks_out_labels` equals **1**, the path of a numerical descriptor (an `orb` file) is needed to be specified under the `NUMERICAL_DESCRIPTOR` tag in the `STRU` file. For example:\n\n  ```text\n  NUMERICAL_ORBITAL\n  H_gga_8au_60Ry_2s1p.orb\n  O_gga_7au_60Ry_2s2p1d.orb\n\n  NUMERICAL_DESCRIPTOR\n  jle.orb\n  ```\n  This is not needed when `deepks_out_labels` equals 2."
+  },
+  {
+    "keyword": "deepks_scf",
+    "severity": "info",
+    "message": "Note: A trained, traced model file is needed."
+  },
+  {
+    "keyword": "deepks_equiv",
+    "severity": "info",
+    "message": "Note: the equivariant version of DeePKS-kit is still under development, so this feature is currently only intended for internal usage."
+  },
+  {
+    "keyword": "deepks_out_unittest",
+    "severity": "info",
+    "message": "Note: Not relevant when running actual calculations. When set to 1, ABACUS needs to be run with only 1 process."
+  },
+  {
+    "keyword": "cal_syns",
+    "severity": "info",
+    "message": "Note: Only works with LCAO basis and molecular dynamics calculations. Requires atomic velocities. Output starts from the second MD step (istep > 0)."
+  },
+  {
+    "keyword": "nocc (Under Development Feature)",
+    "severity": "info",
+    "message": "Note: If the value is illegal ( > [nelec](#nelec)\\/2 or <= 0), it will be autoset to [nelec](#nelec)\\/2."
+  }
+]

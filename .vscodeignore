@@ -1,0 +1,14 @@
+# Build output (keep necessary files)
+src/
+.vscode/
+parse_abacus_md_to_json/
+
+# Development files
+*.log
+.DS_Store
+Thumbs.db
+
+# Test files
+.test/
+**/*.test.ts
+**/*.test.js

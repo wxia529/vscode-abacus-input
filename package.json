@@ -1,0 +1,115 @@
+{
+  "name": "abacus-input-helper",
+  "displayName": "ABACUS INPUT Helper",
+  "description": "Intelligent completion, validation and diagnostics for ABACUS INPUT files",
+  "version": "0.1.0",
+  "publisher": "wxia529",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets",
+    "Linters"
+  ],
+  "keywords": [
+    "ABACUS",
+    "DFT",
+    "first-principles",
+    "computational materials"
+  ],
+  "activationEvents": [
+    "onLanguage:abacus-input",
+    "workspaceContains:**/INPUT",
+    "workspaceContains:**/INPUT.*"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "abacus-input",
+        "aliases": [
+          "ABACUS INPUT",
+          "abacus-input"
+        ],
+        "filenames": [
+          "INPUT"
+        ],
+        "firstLine": "^\\s*#.*INPUT|INPUT_PARAMETERS|suffix|calculation|ecutwfc",
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "abacus-input",
+        "scopeName": "source.abacus-input",
+        "path": "./syntaxes/abacus-input.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "abacus-input",
+        "path": "./snippets/abacus-input-snippets.json"
+      }
+    ],
+    "configuration": {
+      "title": "ABACUS INPUT Helper",
+      "properties": {
+        "abacusInput.completion.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable intelligent completion for ABACUS INPUT files"
+        },
+        "abacusInput.diagnostics.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable validation and diagnostics for ABACUS INPUT files"
+        },
+        "abacusInput.hover.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable hover documentation for ABACUS INPUT keywords"
+        },
+        "abacusInput.dataPath": {
+          "type": "string",
+          "default": "",
+          "description": "Custom path to ABACUS JSON data files (completion.json, constraints.json, etc.). Leave empty to use bundled data."
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "abacusInput.reloadData",
+        "title": "Reload ABACUS Data",
+        "category": "ABACUS INPUT"
+      },
+      {
+        "command": "abacusInput.checkData",
+        "title": "Check Data Status",
+        "category": "ABACUS INPUT"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "@types/vscode": "^1.74.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "@vscode/vsce": "^3.0.0",
+    "eslint": "^8.57.0",
+    "typescript": "^5.0.0",
+    "typescript-eslint": "^7.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abacus-team/abacus-input-vscode"
+  },
+  "license": "MIT"
+}

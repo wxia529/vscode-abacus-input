@@ -1,0 +1,82 @@
+{
+  "deepks_v_delta": {
+    "requires": {
+      "deepks_out_labels": true
+    }
+  },
+  "fixed_axes": {
+    "requires": {
+      "calculation": "cell-relax"
+    }
+  },
+  "if_separate_k": {
+    "requires": {
+      "basis_type": "lcao"
+    }
+  },
+  "ocp_set": {
+    "requires": {
+      "ocp": true
+    }
+  },
+  "out_pchg": {
+    "requires": {
+      "basis_type": "lcao"
+    }
+  },
+  "out_wfc_norm": {
+    "requires": {
+      "basis_type": "lcao"
+    }
+  },
+  "out_wfc_re_im": {
+    "requires": {
+      "basis_type": "lcao"
+    }
+  },
+  "pexsi_nproc": {
+    "requires": {
+      "pexsi_ordering": 0
+    }
+  },
+  "relax_bfgs_init": {
+    "requires": {
+      "relax_new": false
+    }
+  },
+  "relax_bfgs_rmax": {
+    "requires": {
+      "relax_new": false
+    }
+  },
+  "relax_bfgs_rmin": {
+    "requires": {
+      "relax_new": false
+    }
+  },
+  "relax_bfgs_w1": {
+    "requires": {
+      "relax_new": false
+    }
+  },
+  "relax_bfgs_w2": {
+    "requires": {
+      "relax_new": false
+    }
+  },
+  "relax_cg_thr": {
+    "requires": {
+      "relax_new": false
+    }
+  },
+  "vdw_cutoff_radius": {
+    "requires": {
+      "vdw_cutoff_type": "radius"
+    }
+  },
+  "wannier_spin": {
+    "requires": {
+      "nspin": 2
+    }
+  }
+}

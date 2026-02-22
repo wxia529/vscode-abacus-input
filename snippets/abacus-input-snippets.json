@@ -1,0 +1,97 @@
+{
+  "ABACUS calculation": {
+    "prefix": "calculation",
+    "body": "calculation ${1|scf,nscf,relax,cell-relax,md,get_pchg,get_wf,get_s,gen_bessel,gen_opt_abfs,test_memory,test_neighbour|}",
+    "description": "Specify the type of calculation"
+  },
+  "ABACUS basis_type": {
+    "prefix": "basis_type",
+    "body": "basis_type ${1|pw,lcao,lcao_in_pw|}",
+    "description": "Choose the basis set"
+  },
+  "ABACUS esolver_type": {
+    "prefix": "esolver_type",
+    "body": "esolver_type ${1|ksdft,ofdft,tdofdft,sdft,tddft,lj,dp,nep,ks-lr,lr|}",
+    "description": "Choose the energy solver"
+  },
+  "ABACUS suffix": {
+    "prefix": "suffix",
+    "body": "suffix ${1:ABACUS}",
+    "description": "Output directory suffix"
+  },
+  "ABACUS ecutwfc": {
+    "prefix": "ecutwfc",
+    "body": "ecutwfc ${1:50}",
+    "description": "Plane wave cutoff energy (Ry)"
+  },
+  "ABACUS scf_nmax": {
+    "prefix": "scf_nmax",
+    "body": "scf_nmax ${1:100}",
+    "description": "Maximum number of SCF iterations"
+  },
+  "ABACUS mixing_type": {
+    "prefix": "mixing_type",
+    "body": "mixing_type ${1|plain,Broyden,Pulay,GR-Pulay|}",
+    "description": "Charge density mixing type"
+  },
+  "ABACUS mixing_beta": {
+    "prefix": "mixing_beta",
+    "body": "mixing_beta ${1:0.7}",
+    "description": "Mixing parameter beta"
+  },
+  "ABACUS kspacing": {
+    "prefix": "kspacing",
+    "body": "kspacing ${1:0.5}",
+    "description": "K-point spacing in reciprocal space"
+  },
+  "ABACUS kpoint_grid": {
+    "prefix": "kpoint_grid",
+    "body": "kpoint_grid ${1:1} ${2:1} ${3:1}",
+    "description": "Monkhorst-Pack k-point grid"
+  },
+  "ABACUS smearing_method": {
+    "prefix": "smearing_method",
+    "body": "smearing_method ${1|gaussian,fd,mp,mv|}",
+    "description": "Smearing method for partial occupation"
+  },
+  "ABACUS smearing_sigma": {
+    "prefix": "smearing_sigma",
+    "body": "smearing_sigma ${1:0.02}",
+    "description": "Smearing width (Ry)"
+  },
+  "ABACUS symmetry": {
+    "prefix": "symmetry",
+    "body": "symmetry ${1|0,1|}",
+    "description": "Enable/disable symmetry"
+  },
+  "ABACUS relax_nmax": {
+    "prefix": "relax_nmax",
+    "body": "relax_nmax ${1:100}",
+    "description": "Maximum number of relaxation steps"
+  },
+  "ABACUS md_type": {
+    "prefix": "md_type",
+    "body": "md_type ${1|NVE,NVT,NPT|}",
+    "description": "Molecular dynamics ensemble type"
+  },
+  "ABACUS md_tstep": {
+    "prefix": "md_tstep",
+    "body": "md_tstep ${1:1}",
+    "description": "MD time step (fs)"
+  },
+  "ABACUS md_nstep": {
+    "prefix": "md_nstep",
+    "body": "md_nstep ${1:1000}",
+    "description": "Number of MD steps"
+  },
+  "ABACUS berry_phase": {
+    "prefix": "berry_phase",
+    "body": "berry_phase ${1|true,false|}",
+    "description": "Calculate Berry phase"
+  },
+  "ABACUS deepks_out_labels": {
+    "prefix": "deepks_out_labels",
+    "body": "deepks_out_labels ${1|true,false|}",
+    "description": "Output DeePKS labels"
+  }
+}

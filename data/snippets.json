@@ -1,0 +1,2382 @@
+{
+  "abs_broadening (Under Development Feature)": {
+    "body": "abs_broadening (Under Development Feature) 0.01",
+    "description": "The broadening factor $\\eta$ for the absorption spectrum calculation.",
+    "prefix": "abs_broadening (Under Development Feature)"
+  },
+  "abs_wavelen_range (Under Development Feature)": {
+    "body": "abs_wavelen_range (Under Development Feature) 0.0 0.0",
+    "description": "The range of the wavelength for the absorption spectrum calculation.",
+    "prefix": "abs_wavelen_range (Under Development Feature)"
+  },
+  "aims_nbasis (Under Development Feature)": {
+    "body": "aims_nbasis (Under Development Feature) {} (empty list, where ABACUS use its own basis set size)",
+    "description": "Atomic basis set size for each atom type (with the same order as in `STRU`) in FHI-aims.",
+    "prefix": "aims_nbasis (Under Development Feature)"
+  },
+  "basis_type": {
+    "body": "basis_type ${1|pw,lcao,lcao_in_pw|}",
+    "description": "Choose the basis set.",
+    "prefix": "basis_type"
+  },
+  "berry_phase": {
+    "body": "berry_phase false",
+    "description": "Controls the calculation of Berry phase",
+    "prefix": "berry_phase"
+  },
+  "bessel_descriptor_ecut": {
+    "body": "bessel_descriptor_ecut same as ecutwfc",
+    "description": "energy cutoff of Bessel functions",
+    "prefix": "bessel_descriptor_ecut"
+  },
+  "bessel_descriptor_lmax": {
+    "body": "bessel_descriptor_lmax 2",
+    "description": "the maximum angular momentum of the Bessel functions generated as the projectors in DeePKS",
+    "prefix": "bessel_descriptor_lmax"
+  },
+  "bessel_descriptor_rcut": {
+    "body": "bessel_descriptor_rcut 6.0",
+    "description": "cutoff radius of Bessel functions",
+    "prefix": "bessel_descriptor_rcut"
+  },
+  "bessel_descriptor_sigma": {
+    "body": "bessel_descriptor_sigma 0.1",
+    "description": "smooth parameter at the cutoff radius of projectors",
+    "prefix": "bessel_descriptor_sigma"
+  },
+  "bessel_descriptor_smooth": {
+    "body": "bessel_descriptor_smooth False",
+    "description": "smooth the Bessel functions at radius cutoff",
+    "prefix": "bessel_descriptor_smooth"
+  },
+  "bessel_descriptor_tolerence": {
+    "body": "bessel_descriptor_tolerence 1.0e-12",
+    "description": "tolerance for searching the zeros of Bessel functions",
+    "prefix": "bessel_descriptor_tolerence"
+  },
+  "bessel_nao_ecut": {
+    "body": "bessel_nao_ecut `ecutwfc`",
+    "description": "\"Energy cutoff\" (in Ry) of spherical Bessel functions. The number of spherical Bessel functions that constitute the radial parts of NAOs is determined by sqrt(`bessel_nao_ecut`)$\\times$`bessel_nao_rcu",
+    "prefix": "bessel_nao_ecut"
+  },
+  "bessel_nao_rcut": {
+    "body": "bessel_nao_rcut 6.0",
+    "description": "Cutoff radius (in Bohr) and the common node of spherical Bessel functions used to construct the NAOs.",
+    "prefix": "bessel_nao_rcut"
+  },
+  "bessel_nao_sigma": {
+    "body": "bessel_nao_sigma 0.1",
+    "description": "Smoothing range (in Bohr). See also `bessel_nao_smooth`.",
+    "prefix": "bessel_nao_sigma"
+  },
+  "bessel_nao_smooth": {
+    "body": "bessel_nao_smooth True",
+    "description": "If True, NAOs will be smoothed near the cutoff radius by $1-\\exp\\left(-\\frac{(r-r_{cut})^2}{2\\sigma^2}\\right)$. See `bessel_nao_rcut` for $r_{cut}$ and `bessel_nao_sigma` for $\\sigma$.",
+    "prefix": "bessel_nao_smooth"
+  },
+  "bessel_nao_tolerence": {
+    "body": "bessel_nao_tolerence 1.0e-12",
+    "description": "Tolerance when searching for the zeros of spherical Bessel functions.",
+    "prefix": "bessel_nao_tolerence"
+  },
+  "block": {
+    "body": "block false",
+    "description": "Controls the addition of a potential barrier to prevent electron spillover.",
+    "prefix": "block"
+  },
+  "block_down": {
+    "body": "block_down 0.45",
+    "description": "Lower beginning of the potential barrier",
+    "prefix": "block_down"
+  },
+  "block_height": {
+    "body": "block_height 0.1",
+    "description": "Height of the potential barrier",
+    "prefix": "block_height"
+  },
+  "block_up": {
+    "body": "block_up 0.55",
+    "description": "Upper beginning of the potential barrier",
+    "prefix": "block_up"
+  },
+  "bndpar": {
+    "body": "bndpar 1",
+    "description": "Divide all processors into bndpar groups, and bands (only stochastic orbitals now) will be distributed among each group. It should be larger than 0.",
+    "prefix": "bndpar"
+  },
+  "bx": {
+    "body": "bx 0",
+    "description": "In the matrix operation of grid integral, bx/by/bz grids (in x, y, z directions) are treated as a whole as a matrix element. A different value will affect the calculation speed. The default is 0, whic",
+    "prefix": "bx"
+  },
+  "by": {
+    "body": "by 0",
+    "description": "In the matrix operation of grid integral, bx/by/bz grids (in x, y, z directions) are treated as a whole as a matrix element. A different value will affect the calculation speed. The default is 0, whic",
+    "prefix": "by"
+  },
+  "bz": {
+    "body": "bz 0",
+    "description": "In the matrix operation of grid integral, bx/by/bz grids (in x, y, z directions) are treated as a whole as a matrix element. A different value will affect the calculation speed. The default is 0, whic",
+    "prefix": "bz"
+  },
+  "cal_cond": {
+    "body": "cal_cond False",
+    "description": "Whether to calculate electronic conductivities.",
+    "prefix": "cal_cond"
+  },
+  "cal_force": {
+    "body": "cal_force False if `calculation` is set to `scf`, True if `calculation` is set to `cell-relax`, `relax`, or `md`.",
+    "description": "",
+    "prefix": "cal_force"
+  },
+  "cal_stress": {
+    "body": "cal_stress True if `calculation` is `cell-relax`, False otherwise.",
+    "description": "",
+    "prefix": "cal_stress"
+  },
+  "cal_symm_repr": {
+    "body": "cal_symm_repr 1 3",
+    "description": "Whether to print the matrix representation of symmetry operation to running log file. If the first value is given as 1, then all matrix representations will be printed. The second optional parameter c",
+    "prefix": "cal_symm_repr"
+  },
+  "cal_syns": {
+    "body": "cal_syns False",
+    "description": "Whether to calculate and output asynchronous overlap matrix for Hefei-NAMD interface. When enabled, calculates `<phi(t-1)|phi(t)>` by computing overlap between basis functions at atomic positions from",
+    "prefix": "cal_syns"
+  },
+  "calculation": {
+    "body": "calculation ${1|scf,nscf,relax,cell-relax,md,get_pchg,get_wf,get_s,gen_bessel,gen_opt_abfs|}",
+    "description": "Specify the type of calculation.",
+    "prefix": "calculation"
+  },
+  "cell_factor": {
+    "body": "cell_factor 1.2",
+    "description": "Used in the construction of the pseudopotential tables. It should exceed the maximum linear contraction of the cell during a simulation.",
+    "prefix": "cell_factor"
+  },
+  "chg_extrap": {
+    "body": "chg_extrap ${1|atomic,first-order,second-order|}",
+    "description": "Methods to do extrapolation of density when ABACUS is doing geometry relaxations or molecular dynamics.",
+    "prefix": "chg_extrap"
+  },
+  "cond_che_thr": {
+    "body": "cond_che_thr 1e-8",
+    "description": "Control the error of Chebyshev expansions for conductivities.",
+    "prefix": "cond_che_thr"
+  },
+  "cond_dt": {
+    "body": "cond_dt 0.02",
+    "description": "Time interval ($\\mathrm{d}t$) to integrate Onsager coefficients.",
+    "prefix": "cond_dt"
+  },
+  "cond_dtbatch": {
+    "body": "cond_dtbatch 0",
+    "description": "exp(iH\\*dt\\*cond_dtbatch) is expanded with Chebyshev expansion to calculate conductivities. It is faster but costs more memory.",
+    "prefix": "cond_dtbatch"
+  },
+  "cond_dw": {
+    "body": "cond_dw 0.1",
+    "description": "Frequency interval ($\\mathrm{d}\\omega$) for frequency-dependent conductivities.",
+    "prefix": "cond_dw"
+  },
+  "cond_fwhm": {
+    "body": "cond_fwhm 0.4",
+    "description": "FWHM for conductivities. For Gaussian smearing, $\\mathrm{FWHM}=2\\sqrt{2\\ln2}s$; for Lorentzian smearing, $\\mathrm{FWHM}=2\\gamma$.",
+    "prefix": "cond_fwhm"
+  },
+  "cond_nonlocal": {
+    "body": "cond_nonlocal True",
+    "description": "Whether to consider nonlocal potential correction when calculating velocity matrix $\\bra{\\psi_i}\\hat{v}\\ket{\\psi_j}$.",
+    "prefix": "cond_nonlocal"
+  },
+  "cond_smear": {
+    "body": "cond_smear ${1|1,2|}",
+    "description": "Smearing method for conductivities",
+    "prefix": "cond_smear"
+  },
+  "cond_wcut": {
+    "body": "cond_wcut 10.0",
+    "description": "Cutoff frequency for frequency-dependent conductivities.",
+    "prefix": "cond_wcut"
+  },
+  "deepks_band_range": {
+    "body": "deepks_band_range -1 0",
+    "description": "The first value should not be larger than the second one and the meaning differs in different cases below",
+    "prefix": "deepks_band_range"
+  },
+  "deepks_bandgap": {
+    "body": "deepks_bandgap ${1|0,1,2,3|}",
+    "description": "include bandgap label for DeePKS training",
+    "prefix": "deepks_bandgap"
+  },
+  "deepks_equiv": {
+    "body": "deepks_equiv False",
+    "description": "whether to use equivariant version of DeePKS",
+    "prefix": "deepks_equiv"
+  },
+  "deepks_model": {
+    "body": "deepks_model None",
+    "description": "the path of the trained, traced neural network model file generated by [deepks-kit](https://github.com/deepmodeling/deepks-kit)",
+    "prefix": "deepks_model"
+  },
+  "deepks_out_base": {
+    "body": "deepks_out_base None",
+    "description": "Print labels and descriptors calculated by base functional ( determined by `deepks_out_base` ) and target functional ( determined by `dft_functional` ) for DeePKS in per `deepks_out_freq_elec` electro",
+    "prefix": "deepks_out_base"
+  },
+  "deepks_out_freq_elec": {
+    "body": "deepks_out_freq_elec 0",
+    "description": "When `deepks_out_freq_elec` is greater than 0, print labels and descriptors for DeePKS in OUT.${suffix}/DeePKS_Labels_Elec per `deepks_out_freq_elec` electronic iterations, with suffix `_e*` to distin",
+    "prefix": "deepks_out_freq_elec"
+  },
+  "deepks_out_labels": {
+    "body": "deepks_out_labels ${1|0,1,2|}",
+    "description": "Print labels and descriptors for DeePKS in OUT.${suffix}. The names of these files start with \"deepks\".",
+    "prefix": "deepks_out_labels"
+  },
+  "deepks_out_unittest": {
+    "body": "deepks_out_unittest False",
+    "description": "generate files for constructing DeePKS unit test",
+    "prefix": "deepks_out_unittest"
+  },
+  "deepks_scf": {
+    "body": "deepks_scf False",
+    "description": "perform self-consistent field iteration in DeePKS method",
+    "prefix": "deepks_scf"
+  },
+  "deepks_v_delta": {
+    "body": "deepks_v_delta 0",
+    "description": "Include V_delta/V_delta_R (Hamiltonian in k/real space) label for DeePKS training. When `deepks_out_labels` is true and `deepks_v_delta` > 0 (k space), ABACUS will output `deepks_hbase.npy`, `deepks_v",
+    "prefix": "deepks_v_delta"
+  },
+  "device": {
+    "body": "device ${1|cpu,gpu|}",
+    "description": "Specifies the computing device for ABACUS.",
+    "prefix": "device"
+  },
+  "dft_functional": {
+    "body": "dft_functional Used the same as DFT functional as specified in the pseudopotential files.",
+    "description": "In our package, the XC functional can either be set explicitly using the `dft_functional` keyword in `INPUT` file. If `dft_functional` is not specified, ABACUS will use the xc functional indicated in",
+    "prefix": "dft_functional"
+  },
+  "dft_plus_u": {
+    "body": "dft_plus_u ${1|1,2,0|}",
+    "description": "Determines whether to calculate the plus U correction, which is especially important for correlated electrons.",
+    "prefix": "dft_plus_u"
+  },
+  "dfthalf_type": {
+    "body": "dfthalf_type ${1|0,1|}",
+    "description": "Choose the type of DFT-1/2 calcutions. Currently, only the PW basis set is supported.",
+    "prefix": "dfthalf_type"
+  },
+  "diag_subspace": {
+    "body": "diag_subspace ${1|0,1,2|}",
+    "description": "The method to diagonalize subspace in dav_subspace method. The available options are:",
+    "prefix": "diag_subspace"
+  },
+  "diago_proc": {
+    "body": "diago_proc 0",
+    "description": "- 0: it will be set to the number of MPI processes. Normally, it is fine just leave it to the default value.",
+    "prefix": "diago_proc"
+  },
+  "diago_smooth_ethr": {
+    "body": "diago_smooth_ethr false",
+    "description": "If `TRUE`, the smooth threshold strategy, which applies a larger threshold (10e-5) for the empty states, will be implemented in the diagonalization methods. (This strategy should not affect total ener",
+    "prefix": "diago_smooth_ethr"
+  },
+  "dip_cor_flag": {
+    "body": "dip_cor_flag False",
+    "description": "Added a dipole correction to the bare ionic potential.",
+    "prefix": "dip_cor_flag"
+  },
+  "dm_to_rho (Under Development Feature)": {
+    "body": "dm_to_rho (Under Development Feature) False",
+    "description": "Reads density matrix $DM(R)$ in npz format and creates electron density on grids. This feature does not work for gamma-only calculations. Only supports serial calculations.",
+    "prefix": "dm_to_rho (Under Development Feature)"
+  },
+  "dmax": {
+    "body": "dmax 0.01",
+    "description": "The maximum displacement of all atoms in one step. This parameter is useful when [cal_syns](#cal_syns) = True.",
+    "prefix": "dmax"
+  },
+  "dos_edelta_ev": {
+    "body": "dos_edelta_ev 0.01",
+    "description": "The step size in writing Density of States (DOS)",
+    "prefix": "dos_edelta_ev"
+  },
+  "dos_emax_ev": {
+    "body": "dos_emax_ev Maximal eigenenergy of $\\hat{H}$",
+    "description": "The maximal range for Density of States (DOS)",
+    "prefix": "dos_emax_ev"
+  },
+  "dos_emin_ev": {
+    "body": "dos_emin_ev Minimal eigenenergy of $\\hat{H}$",
+    "description": "The minimal range for Density of States (DOS)",
+    "prefix": "dos_emin_ev"
+  },
+  "dos_nche": {
+    "body": "dos_nche 100",
+    "description": "The order of Chebyshev expansions when using Stochastic Density Functional Theory (SDFT) to calculate DOS.",
+    "prefix": "dos_nche"
+  },
+  "dos_scale": {
+    "body": "dos_scale 0.01",
+    "description": "Defines the energy range of DOS output as (emax-emin)*(1+dos_scale), centered at (emax+emin)/2. This parameter will be used when dos_emin and dos_emax are not set.",
+    "prefix": "dos_scale"
+  },
+  "dos_sigma": {
+    "body": "dos_sigma 0.07",
+    "description": "The width of the Gaussian factor when obtaining smeared Density of States (DOS)",
+    "prefix": "dos_sigma"
+  },
+  "dp_aparam": {
+    "body": "dp_aparam {}",
+    "description": "The atomic parameter for dp potential. The array size can be (1) natoms x dim_aparam, then all frames are assumed to be provided with the same aparam; (2) dim_aparam, then all frames and atoms are ass",
+    "prefix": "dp_aparam"
+  },
+  "dp_fparam": {
+    "body": "dp_fparam {}",
+    "description": "The frame parameter for dp potential. The array size is dim_fparam, then all frames are assumed to be provided with the same fparam.",
+    "prefix": "dp_fparam"
+  },
+  "dp_rescaling": {
+    "body": "dp_rescaling 1.0",
+    "description": "Rescaling factor to use a temperature-dependent DP. Energy, stress and force calculated by DP will be multiplied by this factor.",
+    "prefix": "dp_rescaling"
+  },
+  "dump_force": {
+    "body": "dump_force True",
+    "description": "Whether to output atomic forces into the file `OUT.${suffix}/MD_dump`.",
+    "prefix": "dump_force"
+  },
+  "dump_vel": {
+    "body": "dump_vel True",
+    "description": "Whether to output atomic velocities into the file `OUT.${suffix}/MD_dump`.",
+    "prefix": "dump_vel"
+  },
+  "dump_virial": {
+    "body": "dump_virial True",
+    "description": "Whether to output lattice virials into the file `OUT.${suffix}/MD_dump`.",
+    "prefix": "dump_virial"
+  },
+  "eb_k": {
+    "body": "eb_k 80",
+    "description": "The relative permittivity of the bulk solvent, 80 for water",
+    "prefix": "eb_k"
+  },
+  "ecutexx": {
+    "body": "ecutexx same as *[ecutrho](#ecutrho)*",
+    "description": "The energy cutoff for EXX (Fock) exchange operator in plane wave basis calculations. Reducing `ecutexx` below `ecutrho` may significantly accelerate EXX computations. This speed improvement comes with",
+    "prefix": "ecutexx"
+  },
+  "ecutrho": {
+    "body": "ecutrho 4*ecutwfc",
+    "description": "Energy cutoff for charge density and potential. For norm-conserving pseudopotential you should stick to the default value, you can reduce it by a little but it will introduce noise especially on force",
+    "prefix": "ecutrho"
+  },
+  "ecutwfc": {
+    "body": "ecutwfc 50 for PW basis, 100 for LCAO basis",
+    "description": "Energy cutoff for plane wave functions. Note that even for localized orbitals basis, you still need to setup an energy cutoff for this system. Because our local pseudopotential parts and the related f",
+    "prefix": "ecutwfc"
+  },
+  "efield_amp": {
+    "body": "efield_amp 0.0",
+    "description": "Amplitude of the electric field. The saw-like potential increases with slope efield_amp  in the region from  efield_pos_max+efield_pos_dec-1) to (efield_pos_max), then decreases until (efield_pos_max+",
+    "prefix": "efield_amp"
+  },
+  "efield_dir": {
+    "body": "efield_dir ${1|0,1,2|}",
+    "description": "The direction of the electric field or dipole correction is parallel to the reciprocal lattice vector, so the potential is constant in planes defined by FFT grid points, efield_dir can set to 0, 1 or",
+    "prefix": "efield_dir"
+  },
+  "efield_flag": {
+    "body": "efield_flag False",
+    "description": "Added the electric field.",
+    "prefix": "efield_flag"
+  },
+  "efield_pos_dec": {
+    "body": "efield_pos_dec Autoset to `width of vacuum / 10`",
+    "description": "Zone in the unit cell where the saw-like potential decreases, 0 < efield_pos_dec < 1.",
+    "prefix": "efield_pos_dec"
+  },
+  "efield_pos_max": {
+    "body": "efield_pos_max Autoset to `center of vacuum - width of vacuum / 20`",
+    "description": "Position of the maximum of the saw-like potential along crystal axis efield_dir, within the  unit cell, 0 <= efield_pos_max < 1.",
+    "prefix": "efield_pos_max"
+  },
+  "elpa_num_thread": {
+    "body": "elpa_num_thread -1",
+    "description": "Number of threads used in one elpa calculation.",
+    "prefix": "elpa_num_thread"
+  },
+  "emax_sto": {
+    "body": "emax_sto 0.0",
+    "description": "Trial energy to guess the upper bound of eigen energies of the Hamiltonian Operator $\\hat{H}$.",
+    "prefix": "emax_sto"
+  },
+  "emin_sto": {
+    "body": "emin_sto 0.0",
+    "description": "Trial energy to guess the lower bound of eigen energies of the Hamiltonian Operator $\\hat{H}$.",
+    "prefix": "emin_sto"
+  },
+  "erf_ecut": {
+    "body": "erf_ecut 0.0",
+    "description": "Used in variable-cell molecular dynamics (or in stress calculation). See [erf_sigma](#erf_sigma) in detail.",
+    "prefix": "erf_ecut"
+  },
+  "erf_height": {
+    "body": "erf_height 0.0",
+    "description": "Used in variable-cell molecular dynamics (or in stress calculation). See [erf_sigma](#erf_sigma) in detail.",
+    "prefix": "erf_height"
+  },
+  "erf_sigma": {
+    "body": "erf_sigma 0.1",
+    "description": "In order to recover the accuracy of a constant energy cutoff calculation, the kinetic functional is modified, which is used in variable-cell molecular dynamics (or in stress calculation).",
+    "prefix": "erf_sigma"
+  },
+  "esolver_type": {
+    "body": "esolver_type ${1|ksdft,ofdft,tdofdft,sdft,tddft,lj,dp,nep,ks-lr,lr|}",
+    "description": "choose the energy solver.",
+    "prefix": "esolver_type"
+  },
+  "estep_per_md": {
+    "body": "estep_per_md 1",
+    "description": "The number of electronic propagation steps between two ionic steps.",
+    "prefix": "estep_per_md"
+  },
+  "exx_c_grad_r_threshold": {
+    "body": "exx_c_grad_r_threshold 1E-4",
+    "description": "See also the entry [exx_pca_threshold](#exx_pca_threshold). $\\nabla C^{a}_{ik} * R_{ik}$ is used in stress. Smaller components (less than exx_c_grad_r_threshold) of the $\\nabla C^{a}_{ik} * R_{ik}$ ma",
+    "prefix": "exx_c_grad_r_threshold"
+  },
+  "exx_c_grad_threshold": {
+    "body": "exx_c_grad_threshold 1E-4",
+    "description": "See also the entry [exx_pca_threshold](#exx_pca_threshold). $\\nabla C^{a}_{ik}$ is used in force. Smaller components (less than exx_c_grad_threshold) of the $\\nabla C^{a}_{ik}$ matrix are neglected to",
+    "prefix": "exx_c_grad_threshold"
+  },
+  "exx_c_threshold": {
+    "body": "exx_c_threshold 1E-4",
+    "description": "See also the entry [exx_pca_threshold](#exx_pca_threshold). Smaller components (less than exx_c_threshold) of the $C^{a}_{ik}$ matrix are neglected to accelerate calculation. The larger the threshold",
+    "prefix": "exx_c_threshold"
+  },
+  "exx_ccp_rmesh_times": {
+    "body": "exx_ccp_rmesh_times - 5: if *[dft_functional](#dft_functional)==hf/pbe0/scan0/muller/power/wp22*\n  - 1.5: if *[dft_functional](#dft_functional)==hse/cwp22*\n  - 1: else",
+    "description": "This parameter determines how many times larger the radial mesh required for calculating Columb potential is to that of atomic orbitals. The value should be larger than 0. Reducing this value can effe",
+    "prefix": "exx_ccp_rmesh_times"
+  },
+  "exx_ccp_threshold": {
+    "body": "exx_ccp_threshold 1e-8",
+    "description": "It is related to the cutoff of on-site Coulomb potentials. (Currently not used)",
+    "prefix": "exx_ccp_threshold"
+  },
+  "exx_cs_inv_thr": {
+    "body": "exx_cs_inv_thr -1",
+    "description": "By default, the Coulomb matrix inversion required for obtaining LRI coefficients is performed using LU decomposition. However, this approach may suffer from numerical instabilities when a large set of",
+    "prefix": "exx_cs_inv_thr"
+  },
+  "exx_dm_threshold": {
+    "body": "exx_dm_threshold 1E-4",
+    "description": "The Fock exchange can be expressed as $\\sum_{k,l}(ik|jl)D_{kl}$ where D is the density matrix. Smaller values of the density matrix can be truncated to accelerate calculation. The larger the threshold",
+    "prefix": "exx_dm_threshold"
+  },
+  "exx_ene_thr": {
+    "body": "exx_ene_thr 1e-5",
+    "description": "The threshold for the change of exact exchange energy to judge convergence of the outer loop in the separate loop EXX calculation.",
+    "prefix": "exx_ene_thr"
+  },
+  "exx_erfc_alpha": {
+    "body": "exx_erfc_alpha see [hybrid_func_params](#hybrid_func_params)",
+    "description": "Fraction of short-ranged Fock exchange erfc(wr)/r ($\\beta$) in range-separated hybrid funtionals, so that $E_{X} = \\alpha E_{X}^\\text{HF-LR}+(\\alpha+\\beta) E_{X}^\\text{HF-SR}+(1-\\alpha)E_{X}^\\text{KS-",
+    "prefix": "exx_erfc_alpha"
+  },
+  "exx_erfc_omega": {
+    "body": "exx_erfc_omega see [hybrid_func_params](#hybrid_func_params)",
+    "description": "Range-separation parameter in exchange, such that $1/r=\\text{erfc}(\\omega r)/r+\\text{erf}(\\omega r)/r$",
+    "prefix": "exx_erfc_omega"
+  },
+  "exx_fock_alpha": {
+    "body": "exx_fock_alpha see [hybrid_func_params](#hybrid_func_params)",
+    "description": "Fraction of full-ranged Fock exchange 1/r ($\\alpha$) in range-separated hybrid funtionals, so that $E_{X} = \\alpha E_{X}^\\text{HF-LR}+(\\alpha+\\beta) E_{X}^\\text{HF-SR}+(1-\\alpha)E_{X}^\\text{KS-LR}+[1-",
+    "prefix": "exx_fock_alpha"
+  },
+  "exx_fock_lambda": {
+    "body": "exx_fock_lambda 0.3",
+    "description": "It is used to compensate for divergence points at G=0 in the evaluation of Fock exchange using *lcao_in_pw* method.",
+    "prefix": "exx_fock_lambda"
+  },
+  "exx_gamma_extrapolation": {
+    "body": "exx_gamma_extrapolation True",
+    "description": "Whether to use the gamma point extrapolation method to calculate the Fock exchange operator. See [https://doi.org/10.1103/PhysRevB.79.205114](https://doi.org/10.1103/PhysRevB.79.205114) for details. S",
+    "prefix": "exx_gamma_extrapolation"
+  },
+  "exx_hybrid_step": {
+    "body": "exx_hybrid_step 100",
+    "description": "The maximal iteration number of the outer-loop, where the Fock exchange is calculated",
+    "prefix": "exx_hybrid_step"
+  },
+  "exx_mixing_beta": {
+    "body": "exx_mixing_beta 1.0",
+    "description": "Mixing parameter for densty matrix in each iteration of the outer-loop",
+    "prefix": "exx_mixing_beta"
+  },
+  "exx_opt_orb_ecut": {
+    "body": "exx_opt_orb_ecut 0",
+    "description": "The cut-off of plane wave expansion, when the plane wave basis is used to optimize the radial ABFs. A reasonable choice is 60.",
+    "prefix": "exx_opt_orb_ecut"
+  },
+  "exx_opt_orb_lmax": {
+    "body": "exx_opt_orb_lmax 0",
+    "description": "The maximum l of the spherical Bessel functions, when the radial part of opt-ABFs are generated as linear combinations of spherical Bessel functions. A reasonable choice is 2.",
+    "prefix": "exx_opt_orb_lmax"
+  },
+  "exx_opt_orb_tolerence": {
+    "body": "exx_opt_orb_tolerence 1E-12",
+    "description": "The threshold when solving for the zeros of spherical Bessel functions. A reasonable choice is 1e-12.",
+    "prefix": "exx_opt_orb_tolerence"
+  },
+  "exx_pca_threshold": {
+    "body": "exx_pca_threshold 1E-4",
+    "description": "To accelerate the evaluation of four-center integrals ($ik|jl$), the product of atomic orbitals are expanded in the basis of auxiliary basis functions (ABF): $\\Phi_{i}\\Phi_{k}\\sim \\sum_{a} C^{a}_{ik}P",
+    "prefix": "exx_pca_threshold"
+  },
+  "exx_real_number": {
+    "body": "exx_real_number depends on the [gamma_only](#gamma_only) option\n  - True: if gamma_only\n  - False: else",
+    "description": "- True: Enforce LibRI to use `double` data type.",
+    "prefix": "exx_real_number"
+  },
+  "exx_separate_loop": {
+    "body": "exx_separate_loop True",
+    "description": "There are two types of iterative approaches provided by ABACUS to evaluate Fock exchange.",
+    "prefix": "exx_separate_loop"
+  },
+  "exx_singularity_correction": {
+    "body": "exx_singularity_correction ${1|spencer,revised_spencer|}",
+    "description": "- spencer: see Phys. Rev. B 77, 193110 (2008).",
+    "prefix": "exx_singularity_correction"
+  },
+  "exx_symmetry_realspace": {
+    "body": "exx_symmetry_realspace True",
+    "description": "- False: only rotate k-space density matrix D(k) from irreducible k-points to accelerate diagonalization",
+    "prefix": "exx_symmetry_realspace"
+  },
+  "exx_thr_type": {
+    "body": "exx_thr_type ${1|energy,density|}",
+    "description": "The type of threshold used to judge whether the outer loop has converged in the separate loop EXX calculation.",
+    "prefix": "exx_thr_type"
+  },
+  "exx_v_grad_r_threshold": {
+    "body": "exx_v_grad_r_threshold 1E-1",
+    "description": "See also the entry [exx_pca_threshold](#exx_pca_threshold). With the approximation $\\Phi_{i}\\Phi_{k}\\sim C^{a}_{ik}P_{a}$, the four-center integral in Fock exchange is expressed as $(ik|jl)=\\sum_{a,b}",
+    "prefix": "exx_v_grad_r_threshold"
+  },
+  "exx_v_grad_threshold": {
+    "body": "exx_v_grad_threshold 1E-1",
+    "description": "See also the entry [exx_pca_threshold](#exx_pca_threshold). With the approximation $\\Phi_{i}\\Phi_{k}\\sim C^{a}_{ik}P_{a}$, the four-center integral in Fock exchange is expressed as $(ik|jl)=\\sum_{a,b}",
+    "prefix": "exx_v_grad_threshold"
+  },
+  "exx_v_threshold": {
+    "body": "exx_v_threshold 1E-1",
+    "description": "See also the entry [exx_pca_threshold](#exx_pca_threshold). With the approximation $\\Phi_{i}\\Phi_{k}\\sim \\sum_{a} C^{a}_{ik}P_{a}$, the four-center integral in Fock exchange is expressed as $(ik|jl)=\\",
+    "prefix": "exx_v_threshold"
+  },
+  "exxace": {
+    "body": "exxace True",
+    "description": "Whether to use the ACE method (https://doi.org/10.1021/acs.jctc.6b00092) to accelerate the calculation the Fock exchange matrix. Should be set to true most of the time.",
+    "prefix": "exxace"
+  },
+  "fft_mode": {
+    "body": "fft_mode ${1|0,1,2,3|}",
+    "description": "Set the mode of FFTW.",
+    "prefix": "fft_mode"
+  },
+  "fixed_atoms": {
+    "body": "fixed_atoms False",
+    "description": "- True: The direct coordinates of atoms will be preserved during variable-cell relaxation.",
+    "prefix": "fixed_atoms"
+  },
+  "fixed_axes": {
+    "body": "fixed_axes ${1|None,volume,shape,a,b,c,ab,ac,bc|}",
+    "description": "Specifies which cell degrees of freedom are fixed during variable-cell relaxation. The available options depend on the [relax_new](#relax_new) setting:",
+    "prefix": "fixed_axes"
+  },
+  "fixed_ibrav": {
+    "body": "fixed_ibrav False",
+    "description": "- True: the lattice type will be preserved during relaxation. The lattice vectors are reconstructed to match the specified Bravais lattice type after each update.",
+    "prefix": "fixed_ibrav"
+  },
+  "force_thr": {
+    "body": "force_thr 0.001",
+    "description": "Threshold of the force convergence. The threshold is compared with the largest force among all of the atoms. The recommended value for using atomic orbitals is 0.04 eV/Angstrom (0.0016 Ry/Bohr). The p",
+    "prefix": "force_thr"
+  },
+  "force_thr_ev": {
+    "body": "force_thr_ev 0.0257112",
+    "description": "Threshold of the force convergence. The threshold is compared with the largest force among all of the atoms. The recommended value for using atomic orbitals is 0.04 eV/Angstrom (0.0016 Ry/Bohr). The p",
+    "prefix": "force_thr_ev"
+  },
+  "force_zero_out": {
+    "body": "force_zero_out 0.0",
+    "description": "The atomic forces that are smaller than `force_zero_out` will be treated as zero.",
+    "prefix": "force_zero_out"
+  },
+  "gamma_only": {
+    "body": "gamma_only ${1|0,1|}",
+    "description": "Whether to use gamma_only algorithm.",
+    "prefix": "gamma_only"
+  },
+  "gate_flag": {
+    "body": "gate_flag false",
+    "description": "Controls the addition of compensating charge by a charged plate for charged cells.",
+    "prefix": "gate_flag"
+  },
+  "gdir": {
+    "body": "gdir ${1|1,2,3|}",
+    "description": "The direction of the polarization in the lattice vector for Berry phase calculation",
+    "prefix": "gdir"
+  },
+  "hubbard_u": {
+    "body": "hubbard_u 0.0",
+    "description": "Specifies the Hubbard Coulomb interaction parameter U (eV) in plus U correction, which should be specified for each atom unless the Yukawa potential is used.",
+    "prefix": "hubbard_u"
+  },
+  "if_separate_k": {
+    "body": "if_separate_k false",
+    "description": "Specifies whether to write the partial charge densities for all k-points to individual files or merge them. **Warning**: Enabling symmetry may produce unwanted results due to reduced k-point weights a",
+    "prefix": "if_separate_k"
+  },
+  "imp_sol": {
+    "body": "imp_sol False",
+    "description": "Calculate implicit solvation correction",
+    "prefix": "imp_sol"
+  },
+  "init_chg": {
+    "body": "init_chg ${1|atomic,file,wfc,dm,hr,auto|}",
+    "description": "This variable is used for both plane wave set and localized orbitals set. It indicates the type of starting density.",
+    "prefix": "init_chg"
+  },
+  "init_vecpot_file": {
+    "body": "init_vecpot_file False",
+    "description": "Initialize vector potential through file or not.",
+    "prefix": "init_vecpot_file"
+  },
+  "init_vel": {
+    "body": "init_vel False",
+    "description": "- True: read the atom velocity (atomic unit : 1 a.u. = 21.877 Angstrom/fs) from the atom file (`STRU`) and determine the initial temperature [md_tfirst](#md_tfirst-md_tlast).  If [md_tfirst](#md_tfirs",
+    "prefix": "init_vel"
+  },
+  "init_wfc": {
+    "body": "init_wfc ${1|atomic,atomic+random,file,random,nao,nao+random|}",
+    "description": "The type of the starting wave functions.",
+    "prefix": "init_wfc"
+  },
+  "initsto_ecut": {
+    "body": "initsto_ecut 0.0",
+    "description": "Stochastic wave functions are initialized in a large box generated by \"4*`initsto_ecut`\". `initsto_ecut` should be larger than [ecutwfc](#ecutwfc). In this method, SDFT results are the same when using",
+    "prefix": "initsto_ecut"
+  },
+  "initsto_freq": {
+    "body": "initsto_freq 0",
+    "description": "Frequency (once each initsto_freq steps) to generate new stochastic orbitals when running md.",
+    "prefix": "initsto_freq"
+  },
+  "kpar": {
+    "body": "kpar 1",
+    "description": "Divide all processors into kpar groups, and k points will be distributed among each group. The value taken should be less than or equal to the number of k points as well as the number of MPI processes",
+    "prefix": "kpar"
+  },
+  "kpoint_file": {
+    "body": "kpoint_file KPT",
+    "description": "The name of the k-point file that includes the k-point information of Brillouin zone.",
+    "prefix": "kpoint_file"
+  },
+  "ks_solver": {
+    "body": "ks_solver ${1|cg,bpcg,dav,dav_subspace,lapack,genelpa,scalapack_gvx,cusolver,cusolvermp,elpa|}",
+    "description": "Choose the diagonalization methods for the Hamiltonian matrix expanded in a certain basis set.",
+    "prefix": "ks_solver"
+  },
+  "kspacing": {
+    "body": "kspacing 0.0",
+    "description": "Set the smallest allowed spacing between k points, unit in 1/bohr. It should be larger than 0.0, and suggest smaller than 0.25. When you have set this value > 0.0, then the KPT file is unnecessary, an",
+    "prefix": "kspacing"
+  },
+  "latname": {
+    "body": "latname ${1|none,sc,fcc,bcc,hexagonal,trigonal,st,bct,so,baco|}",
+    "description": "Specifies the type of Bravias lattice. When set to `none`, the three lattice vectors are supplied explicitly in STRU file. When set to a certain Bravais lattice type, there is no need to provide latti",
+    "prefix": "latname"
+  },
+  "lcao_dk": {
+    "body": "lcao_dk 0.01",
+    "description": "the interval of k points for two-center integrals. The two-center integration table are obtained via a k space integral on a uniform grid with spacing `lcao_dk`.",
+    "prefix": "lcao_dk"
+  },
+  "lcao_dr": {
+    "body": "lcao_dr 0.01",
+    "description": "r spacing of the integration table of two-center integrals.",
+    "prefix": "lcao_dr"
+  },
+  "lcao_ecut": {
+    "body": "lcao_ecut `ecutwfc`",
+    "description": "Energy cutoff (in Ry) for two-center integrals in LCAO. The two-center integration table are obtained via a k space integral whose upper limit is about sqrt(`lcao_ecut`).",
+    "prefix": "lcao_ecut"
+  },
+  "lcao_rmax": {
+    "body": "lcao_rmax 30",
+    "description": "Maximum distance for the two-center integration table.",
+    "prefix": "lcao_rmax"
+  },
+  "ldos_line": {
+    "body": "ldos_line 0.0 0.0 0.0 0.0 0.0 1.0 100",
+    "description": "Specify the path of the three-dimensional space and display LDOS in the form of a two-dimensional color chart, see details in [out_ldos](#out_ldos). The first three paramenters are the direct coordina",
+    "prefix": "ldos_line"
+  },
+  "lj_epsilon": {
+    "body": "lj_epsilon No default",
+    "description": "The vector representing the $\\epsilon$ matrix for Leonard Jones potential. See details in [lj_rule](#lj_rule).",
+    "prefix": "lj_epsilon"
+  },
+  "lj_eshift": {
+    "body": "lj_eshift False",
+    "description": "It True, the LJ potential is shifted by a constant such that it is zero at the cut-off distance.",
+    "prefix": "lj_eshift"
+  },
+  "lj_rcut": {
+    "body": "lj_rcut No default",
+    "description": "Cut-off radius for Leonard Jones potential, beyond which the interaction will be neglected. It can be a single value, which means that all pairs of atoms types share the same cut-off radius. Otherwise",
+    "prefix": "lj_rcut"
+  },
+  "lj_rule": {
+    "body": "lj_rule ${1|1,2|}",
+    "description": "The Lennard-Jones potential between two atoms equals:",
+    "prefix": "lj_rule"
+  },
+  "lj_sigma": {
+    "body": "lj_sigma No default",
+    "description": "The vector representing the $\\sigma$ matrix for Leonard Jones potential. See details in [lj_rule](#lj_rule).",
+    "prefix": "lj_sigma"
+  },
+  "lmaxmax": {
+    "body": "lmaxmax 2.",
+    "description": "If not equals to 2, then the maximum l channels on LCAO is set to lmaxmax. If 2, then the number of l channels will be read from the LCAO data sets. Normally no input should be supplied for this varia",
+    "prefix": "lmaxmax"
+  },
+  "lr_init_xc_kernel (Under Development Feature)": {
+    "body": "lr_init_xc_kernel (Under Development Feature) \"default\"",
+    "description": "The method to initalize the xc kernel.",
+    "prefix": "lr_init_xc_kernel (Under Development Feature)"
+  },
+  "lr_nstates (Under Development Feature)": {
+    "body": "lr_nstates (Under Development Feature) 0",
+    "description": "The number of 2-particle states to be solved",
+    "prefix": "lr_nstates (Under Development Feature)"
+  },
+  "lr_solver (Under Development Feature)": {
+    "body": "lr_solver (Under Development Feature) ${1|lapack,spectrum|}",
+    "description": "The method to solve the Casida equation $AX=\\Omega X$ in LR-TDDFT under Tamm-Dancoff approximation (TDA), where $A_{ai,bj}=(\\epsilon_a-\\epsilon_i)\\delta_{ij}\\delta_{ab}+(ai|f_{Hxc}|bj)+\\alpha_{EX}(ab|",
+    "prefix": "lr_solver (Under Development Feature)"
+  },
+  "lr_thr (Under Development Feature)": {
+    "body": "lr_thr (Under Development Feature) 1e-2",
+    "description": "The convergence threshold of iterative diagonalization solver fo LR-TDDFT. It is a pure-math number with the same as [pw_diag_thr](#pw_diag_thr), but since the Casida equation is a one-shot eigenvalue",
+    "prefix": "lr_thr (Under Development Feature)"
+  },
+  "lr_unrestricted (Under Development Feature)": {
+    "body": "lr_unrestricted (Under Development Feature) False",
+    "description": "Whether to use unrestricted construction for LR-TDDFT (the matrix size will be doubled).",
+    "prefix": "lr_unrestricted (Under Development Feature)"
+  },
+  "lspinorb": {
+    "body": "lspinorb False",
+    "description": "Whether to consider spin-orbit coupling (SOC) effect in the calculation.",
+    "prefix": "lspinorb"
+  },
+  "md_damp": {
+    "body": "md_damp 1.0",
+    "description": "The damping parameter used to add fictitious force in the Langevin method.",
+    "prefix": "md_damp"
+  },
+  "md_dt": {
+    "body": "md_dt 1.0",
+    "description": "The time step used in molecular dynamics calculations.",
+    "prefix": "md_dt"
+  },
+  "md_dumpfreq": {
+    "body": "md_dumpfreq 1",
+    "description": "The output frequency of `OUT.${suffix}/MD_dump` in molecular dynamics calculations, which including the information of lattices and atoms.",
+    "prefix": "md_dumpfreq"
+  },
+  "md_nraise": {
+    "body": "md_nraise ${1|Anderson,Berendsen,Rescale_v|}",
+    "description": "- Anderson: The \"collision frequency\" parameter is given as 1/`md_nraise`.",
+    "prefix": "md_nraise"
+  },
+  "md_nstep": {
+    "body": "md_nstep 10",
+    "description": "The total number of molecular dynamics steps.",
+    "prefix": "md_nstep"
+  },
+  "md_pchain": {
+    "body": "md_pchain 1",
+    "description": "The number of thermostats coupled with the barostat in the NPT ensemble based on the Nose-Hoover style non-Hamiltonian equations of motion.",
+    "prefix": "md_pchain"
+  },
+  "md_pcouple": {
+    "body": "md_pcouple ${1|none,xyz,xy,xz,yz|}",
+    "description": "The coupled lattice vectors will scale proportionally in NPT ensemble based on the Nose-Hoover style non-Hamiltonian equations of motion.",
+    "prefix": "md_pcouple"
+  },
+  "md_pfirst": {
+    "body": "md_pfirst -1.0",
+    "description": "The target pressure used in NPT ensemble simulations, the default value of `md_plast` is `md_pfirst`. If `md_plast` is set to be different from `md_pfirst`, ABACUS will automatically change the target",
+    "prefix": "md_pfirst"
+  },
+  "md_pfreq": {
+    "body": "md_pfreq 1/400/md_dt",
+    "description": "The frequency of pressure oscillations during the NPT ensemble simulation. If it is too large, the pressure will fluctuate violently; if it is too small, the pressure will take a very long time to equ",
+    "prefix": "md_pfreq"
+  },
+  "md_plast": {
+    "body": "md_plast -1.0",
+    "description": "The target pressure used in NPT ensemble simulations, the default value of `md_plast` is `md_pfirst`. If `md_plast` is set to be different from `md_pfirst`, ABACUS will automatically change the target",
+    "prefix": "md_plast"
+  },
+  "md_pmode": {
+    "body": "md_pmode ${1|iso,aniso,tri,0,2|}",
+    "description": "Specify the cell fluctuation mode in NPT ensemble based on the Nose-Hoover style non-Hamiltonian equations of motion.",
+    "prefix": "md_pmode"
+  },
+  "md_restart": {
+    "body": "md_restart False",
+    "description": "Control whether to restart molecular dynamics calculations and time-dependent density functional theory calculations.",
+    "prefix": "md_restart"
+  },
+  "md_restartfreq": {
+    "body": "md_restartfreq 5",
+    "description": "The output frequency of `OUT.${suffix}/Restart_md.txt` and structural files in the directory `OUT.${suffix}/STRIU/`, which are used to restart molecular dynamics calculations, see [md_restart](#md_res",
+    "prefix": "md_restartfreq"
+  },
+  "md_seed": {
+    "body": "md_seed -1",
+    "description": "The random seed to initialize random numbers used in molecular dynamics calculations.",
+    "prefix": "md_seed"
+  },
+  "md_tchain": {
+    "body": "md_tchain 1",
+    "description": "Number of thermostats coupled with the particles in the NVT/NPT ensemble based on the Nose-Hoover style non-Hamiltonian equations of motion.",
+    "prefix": "md_tchain"
+  },
+  "md_tfirst": {
+    "body": "md_tfirst No default",
+    "description": "The temperature used in molecular dynamics calculations.",
+    "prefix": "md_tfirst"
+  },
+  "md_tfreq": {
+    "body": "md_tfreq 1/40/md_dt",
+    "description": "Control the frequency of temperature oscillations during the simulation. If it is too large, the temperature will fluctuate violently; if it is too small, the temperature will take a very long time to",
+    "prefix": "md_tfreq"
+  },
+  "md_thermostat": {
+    "body": "md_thermostat ${1|nhc,anderson,berendsen,rescaling,rescale_v|}",
+    "description": "Specify the temperature control method used in NVT ensemble.",
+    "prefix": "md_thermostat"
+  },
+  "md_tlast": {
+    "body": "md_tlast No default",
+    "description": "The temperature used in molecular dynamics calculations.",
+    "prefix": "md_tlast"
+  },
+  "md_tolerance": {
+    "body": "md_tolerance 100.0",
+    "description": "The temperature tolerance for velocity rescaling. Velocities are rescaled if the current and target temperature differ more than `md_tolerance`.",
+    "prefix": "md_tolerance"
+  },
+  "md_type": {
+    "body": "md_type ${1|fire,nve,nvt,npt,langevin,msst|}",
+    "description": "Control the algorithm to integrate the equation of motion for molecular dynamics (MD), see [md.md](../md.md#molecular-dynamics) in detail.",
+    "prefix": "md_type"
+  },
+  "mem_saver": {
+    "body": "mem_saver ${1|0,1|}",
+    "description": "Save memory when performing nscf calculations.",
+    "prefix": "mem_saver"
+  },
+  "method_sto": {
+    "body": "method_sto ${1|1,2,other|}",
+    "description": "Different methods to do stochastic DFT",
+    "prefix": "method_sto"
+  },
+  "min_dist_coef": {
+    "body": "min_dist_coef 0.2",
+    "description": "A factor related to the allowed minimum distance between two atoms. At the beginning, ABACUS will check the structure, and if the distance of two atoms is shorter than min_dist_coef*(standard covalent",
+    "prefix": "min_dist_coef"
+  },
+  "mixing_angle": {
+    "body": "mixing_angle -10.0\n\nNote: In new angle mixing, you should set `mixing_beta_mag >> mixing_beta`. The setup of `mixing_beta=0.2`, `mixing_beta_mag=1.0` usually works well.",
+    "description": "Normal broyden mixing can give the converged result for a given magnetic configuration. If one is not interested in the energies of a given magnetic configuration but wants to determine the ground sta",
+    "prefix": "mixing_angle"
+  },
+  "mixing_beta": {
+    "body": "mixing_beta 0.8 for `nspin=1`, 0.4 for `nspin=2` and `nspin=4`.",
+    "description": "In general, the formula of charge mixing can be written as $\\rho_{new} = \\rho_{old} + \\beta * \\rho_{update}$, where $\\rho_{new}$ represents the new charge density after charge mixing, $\\rho_{old}$ rep",
+    "prefix": "mixing_beta"
+  },
+  "mixing_beta_mag": {
+    "body": "mixing_beta_mag `4*mixing_beta`, but the maximum value is 1.6.\n\nNote that `mixing_beta_mag` is not euqal to `mixing_beta` means that $\\rho_{up}$ and $\\rho_{down}$ mix independently from each other. This setting will fail for one case where the $\\rho_{up}$ and $\\rho_{down}$ of the ground state refers to different Kohn-Sham orbitals. For an atomic system, the $\\rho_{up}$ and $\\rho_{down}$ of the ground state refers to different Kohn-Sham orbitals. We all know Kohn-Sham orbitals are orthogonal to each other. So the mixture of $\\rho_{up}$ and $\\rho_{down}$ should be exactly independent, otherwise SCF cannot find the ground state forever. To sum up, please make sure `mixing_beta_mag` and `mixing_gg0_mag` exactly euqal to `mixing_beta` and `mixing_gg0` if you calculate an atomic system.",
+    "description": "Mixing parameter of magnetic density.",
+    "prefix": "mixing_beta_mag"
+  },
+  "mixing_dftu": {
+    "body": "mixing_dftu False",
+    "description": "Whether to mix the occupation matrices.",
+    "prefix": "mixing_dftu"
+  },
+  "mixing_dmr": {
+    "body": "mixing_dmr false",
+    "description": "At n-th iteration which is calculated by `drho<mixing_restart`, SCF will start a mixing for real-space density matrix by using the same coefficiences as the mixing of charge density.",
+    "prefix": "mixing_dmr"
+  },
+  "mixing_gg0": {
+    "body": "mixing_gg0 1.0",
+    "description": "Whether to perfom Kerker scaling for charge density.",
+    "prefix": "mixing_gg0"
+  },
+  "mixing_gg0_mag": {
+    "body": "mixing_gg0_mag 0.0",
+    "description": "Whether to perfom Kerker preconditioner of magnetic density.",
+    "prefix": "mixing_gg0_mag"
+  },
+  "mixing_gg0_min": {
+    "body": "mixing_gg0_min 0.1",
+    "description": "The minimum kerker coefficient.",
+    "prefix": "mixing_gg0_min"
+  },
+  "mixing_ndim": {
+    "body": "mixing_ndim 8",
+    "description": "It indicates the mixing dimensions in Pulay or Broyden. Pulay and Broyden method use the density from previous mixing_ndim steps and do a charge mixing based on this density.",
+    "prefix": "mixing_ndim"
+  },
+  "mixing_restart": {
+    "body": "mixing_restart 0",
+    "description": "If the density difference between input and output `drho` is smaller than `mixing_restart`, SCF will restart at next step which means SCF will restart by using output charge density from perivos itera",
+    "prefix": "mixing_restart"
+  },
+  "mixing_tau": {
+    "body": "mixing_tau False",
+    "description": "Whether to mix the kinetic energy density.",
+    "prefix": "mixing_tau"
+  },
+  "mixing_type": {
+    "body": "mixing_type ${1|plain,pulay,broyden|}",
+    "description": "Charge mixing methods.",
+    "prefix": "mixing_type"
+  },
+  "msst_direction": {
+    "body": "msst_direction ${1|0,1,2|}",
+    "description": "The direction of the shock wave in the MSST method.",
+    "prefix": "msst_direction"
+  },
+  "msst_qmass": {
+    "body": "msst_qmass No default",
+    "description": "Inertia of the extended system variable. You should set a number larger than 0.",
+    "prefix": "msst_qmass"
+  },
+  "msst_tscale": {
+    "body": "msst_tscale 0.01",
+    "description": "The reduction percentage of the initial temperature used to compress volume in the MSST method.",
+    "prefix": "msst_tscale"
+  },
+  "msst_vel": {
+    "body": "msst_vel 0.0",
+    "description": "The velocity of the shock wave in the MSST method.",
+    "prefix": "msst_vel"
+  },
+  "msst_vis": {
+    "body": "msst_vis 0.0",
+    "description": "Artificial viscosity in the MSST method.",
+    "prefix": "msst_vis"
+  },
+  "nb2d": {
+    "body": "nb2d 0",
+    "description": "When using elpa or scalapack to solver the eigenvalue problem, the data should be distributed by the two-dimensional block-cyclic distribution. This paramter specifies the size of the block. It is val",
+    "prefix": "nb2d"
+  },
+  "nbands": {
+    "body": "nbands - nspin=1: max(1.2\\*occupied_bands, occupied_bands + 10)\n  - nspin=2: max(1.2\\*nelec_spin, nelec_spin + 10), in which nelec_spin = max(nelec_spin_up, nelec_spin_down)\n  - nspin=4: max(1.2\\*nelec, nelec + 20)",
+    "description": "The number of Kohn-Sham orbitals to calculate. It is recommended to setup this value, especially when smearing techniques are utilized, more bands should be included.",
+    "prefix": "nbands"
+  },
+  "nbands_sto": {
+    "body": "nbands_sto ${1|0,all|}",
+    "description": "The number of stochastic orbitals",
+    "prefix": "nbands_sto"
+  },
+  "nbspline": {
+    "body": "nbspline -1",
+    "description": "If set to a natural number, a Cardinal B-spline interpolation will be used to calculate Structure Factor. `nbspline` represents the order of B-spline basis and a larger one can get more accurate resul",
+    "prefix": "nbspline"
+  },
+  "nc_k": {
+    "body": "nc_k 0.00037",
+    "description": "The value of the electron density at which the dielectric cavity forms",
+    "prefix": "nc_k"
+  },
+  "nche_sto": {
+    "body": "nche_sto 100",
+    "description": "Chebyshev expansion orders for stochastic DFT.",
+    "prefix": "nche_sto"
+  },
+  "ndx": {
+    "body": "ndx 0",
+    "description": "If set to a positive number, then the three variables specify the numbers of FFT grid (for the dense part of charge density in ultrasoft pseudopotential) points in x, y, z directions, respectively. If",
+    "prefix": "ndx"
+  },
+  "ndy": {
+    "body": "ndy 0",
+    "description": "If set to a positive number, then the three variables specify the numbers of FFT grid (for the dense part of charge density in ultrasoft pseudopotential) points in x, y, z directions, respectively. If",
+    "prefix": "ndy"
+  },
+  "ndz": {
+    "body": "ndz 0",
+    "description": "If set to a positive number, then the three variables specify the numbers of FFT grid (for the dense part of charge density in ultrasoft pseudopotential) points in x, y, z directions, respectively. If",
+    "prefix": "ndz"
+  },
+  "nelec": {
+    "body": "nelec 0.0",
+    "description": "- 0.0: The total number of electrons will be calculated by the sum of valence electrons (i.e. assuming neutral system).",
+    "prefix": "nelec"
+  },
+  "nelec_delta": {
+    "body": "nelec_delta 0.0",
+    "description": "The total number of electrons will be calculated by `nelec`+`nelec_delta`.",
+    "prefix": "nelec_delta"
+  },
+  "nnkpfile": {
+    "body": "nnkpfile seedname.nnkp",
+    "description": "The file name generated when running \"wannier90 -pp ...\" command",
+    "prefix": "nnkpfile"
+  },
+  "nocc (Under Development Feature)": {
+    "body": "nocc (Under Development Feature) [nband](#nband)",
+    "description": "The number of occupied orbitals (up to HOMO) used in the LR-TDDFT calculation.",
+    "prefix": "nocc (Under Development Feature)"
+  },
+  "noncolin": {
+    "body": "noncolin False",
+    "description": "Whether to allow non-collinear magnetic moments, where magnetization can point in arbitrary directions (x, y, z components) rather than being constrained to the z-axis.",
+    "prefix": "noncolin"
+  },
+  "npart_sto": {
+    "body": "npart_sto 1",
+    "description": "Make memory cost to 1/npart_sto times of the previous one when running the post process of SDFT like DOS or conductivities.",
+    "prefix": "npart_sto"
+  },
+  "nspin": {
+    "body": "nspin ${1|1,2,4|}",
+    "description": "The number of spin components of wave functions.",
+    "prefix": "nspin"
+  },
+  "num_stream": {
+    "body": "num_stream \"4\"",
+    "description": "The number of streams used in GPU calculations (only for LCAO). For most devices, the performance is satisfactory when the number is larger than 2.",
+    "prefix": "num_stream"
+  },
+  "nupdown": {
+    "body": "nupdown 0.0",
+    "description": "- 0.0: no constrain apply to system.",
+    "prefix": "nupdown"
+  },
+  "nvirt (Under Development Feature)": {
+    "body": "nvirt (Under Development Feature) 1",
+    "description": "The number of virtual orbitals (staring from LUMO) used in the LR-TDDFT calculation.",
+    "prefix": "nvirt (Under Development Feature)"
+  },
+  "nx": {
+    "body": "nx 0",
+    "description": "If set to a positive number, then the three variables specify the numbers of FFT grid points in x, y, z directions, respectively. If set to 0, the number will be calculated from ecutrho.",
+    "prefix": "nx"
+  },
+  "ny": {
+    "body": "ny 0",
+    "description": "If set to a positive number, then the three variables specify the numbers of FFT grid points in x, y, z directions, respectively. If set to 0, the number will be calculated from ecutrho.",
+    "prefix": "ny"
+  },
+  "nz": {
+    "body": "nz 0",
+    "description": "If set to a positive number, then the three variables specify the numbers of FFT grid points in x, y, z directions, respectively. If set to 0, the number will be calculated from ecutrho.",
+    "prefix": "nz"
+  },
+  "ocp": {
+    "body": "ocp False",
+    "description": "- True: Fixes the band occupations based on the values specified in `ocp_set`.",
+    "prefix": "ocp"
+  },
+  "ocp_set": {
+    "body": "ocp_set None",
+    "description": "- If `ocp` is set to 1, `ocp_set` must be provided as a string specifying the occupation numbers for each band across all k-points. The format follows a space-separated pattern, where occupations are",
+    "prefix": "ocp_set"
+  },
+  "of_cd": {
+    "body": "of_cd False",
+    "description": "Added the current dependent(CD) potential. (https://doi.org/10.1103/PhysRevB.98.144302)",
+    "prefix": "of_cd"
+  },
+  "of_conv": {
+    "body": "of_conv energy",
+    "description": "Criterion used to check the convergence of OFDFT.",
+    "prefix": "of_conv"
+  },
+  "of_full_pw": {
+    "body": "of_full_pw True",
+    "description": "Whether to use full planewaves.",
+    "prefix": "of_full_pw"
+  },
+  "of_full_pw_dim": {
+    "body": "of_full_pw_dim 0",
+    "description": "Specify the parity of FFT dimensions.",
+    "prefix": "of_full_pw_dim"
+  },
+  "of_hold_rho0": {
+    "body": "of_hold_rho0 False",
+    "description": "Whether to fix the average density rho0.",
+    "prefix": "of_hold_rho0"
+  },
+  "of_kernel_file": {
+    "body": "of_kernel_file WTkernel.txt",
+    "description": "The name of WT kernel file.",
+    "prefix": "of_kernel_file"
+  },
+  "of_kinetic": {
+    "body": "of_kinetic wt",
+    "description": "The type of KEDF (kinetic energy density functional).",
+    "prefix": "of_kinetic"
+  },
+  "of_lkt_a": {
+    "body": "of_lkt_a 1.3",
+    "description": "Parameter a of LKT KEDF (kinetic energy density functional).",
+    "prefix": "of_lkt_a"
+  },
+  "of_mcd_alpha": {
+    "body": "of_mcd_alpha 1.0",
+    "description": "The value of the parameter alpha in modified CD potential method. mCDPotenial=alpha*CDPotenial(proposed in paper PhysRevB.98.144302)",
+    "prefix": "of_mcd_alpha"
+  },
+  "of_method": {
+    "body": "of_method tn",
+    "description": "The optimization method used in OFDFT.",
+    "prefix": "of_method"
+  },
+  "of_ml_chi_p": {
+    "body": "of_ml_chi_p 1.0",
+    "description": "Hyperparameter $\\chi_p$: $\\tilde{p}(\\mathbf{r}) = \\tanh(\\chi_p p(\\mathbf{r}))$.",
+    "prefix": "of_ml_chi_p"
+  },
+  "of_ml_chi_pnl": {
+    "body": "of_ml_chi_pnl 1.0",
+    "description": "Containing nkernel (see [of_ml_nkernel](#of_ml_nkernel)) elements. The $i$-th element specifies the hyperparameter $\\chi_{p_{\\rm{nl}}}$ of non-local descriptor defined by the $i$-th kernel function $w",
+    "prefix": "of_ml_chi_pnl"
+  },
+  "of_ml_chi_q": {
+    "body": "of_ml_chi_q False",
+    "description": "Hyperparameter $\\chi_q$: $\\tilde{q}(\\mathbf{r}) = \\tanh(\\chi_q q(\\mathbf{r}))$.",
+    "prefix": "of_ml_chi_q"
+  },
+  "of_ml_chi_qnl": {
+    "body": "of_ml_chi_qnl 1.0",
+    "description": "Containing nkernel (see [of_ml_nkernel](#of_ml_nkernel)) elements. The $i$-th element specifies the hyperparameter $\\chi_{q_{\\rm{nl}}}$ of non-local descriptor defined by the $i$-th kernel function $w",
+    "prefix": "of_ml_chi_qnl"
+  },
+  "of_ml_chi_xi": {
+    "body": "of_ml_chi_xi 1.0",
+    "description": "Containing nkernel (see [of_ml_nkernel](#of_ml_nkernel)) elements. The $i$-th element specifies the hyperparameter $\\chi_\\xi$ of non-local descriptor defined by the $i$-th kernel function $w_i(\\mathbf",
+    "prefix": "of_ml_chi_xi"
+  },
+  "of_ml_device": {
+    "body": "of_ml_device cpu",
+    "description": "Run Neural Network on GPU or CPU.",
+    "prefix": "of_ml_device"
+  },
+  "of_ml_feg": {
+    "body": "of_ml_feg 0",
+    "description": "The method to incorporate the Free Electron Gas (FEG) limit: $F_\\theta |_{\\rm{FEG}} = 1$, where $F_\\theta$ is enhancement factor of Pauli energy.",
+    "prefix": "of_ml_feg"
+  },
+  "of_ml_gamma": {
+    "body": "of_ml_gamma False",
+    "description": "Local descriptor: $\\gamma(\\mathbf{r}) = (\\rho(\\mathbf{r}) / \\rho_0)^{1/3}$.",
+    "prefix": "of_ml_gamma"
+  },
+  "of_ml_gammanl": {
+    "body": "of_ml_gammanl 0",
+    "description": "Containing nkernel (see [of_ml_nkernel](#of_ml_nkernel)) elements. The $i$-th element controls the non-local descriptor defined by the $i$-th kernel function $w_i(\\mathbf{r}-\\mathbf{r}')$: $\\gamma_{\\r",
+    "prefix": "of_ml_gammanl"
+  },
+  "of_ml_gene_data": {
+    "body": "of_ml_gene_data ${1|gamma,p,q,tanhp,tanhq,gammanl,pnl,qnl,xi,tanhxi|}",
+    "description": "Controls the generation of machine learning training data. When enabled, training data in `.npy` format will be saved in the directory `OUT.${suffix}/MLKEDF_Descriptors/`. The generated descriptors ar",
+    "prefix": "of_ml_gene_data"
+  },
+  "of_ml_kernel": {
+    "body": "of_ml_kernel 1",
+    "description": "Containing nkernel (see [of_ml_nkernel](#of_ml_nkernel)) elements. The $i$-th element specifies the type of the $i$-th kernel function.",
+    "prefix": "of_ml_kernel"
+  },
+  "of_ml_kernel_file": {
+    "body": "of_ml_kernel_file none",
+    "description": "Containing nkernel (see [of_ml_nkernel](#of_ml_nkernel)) elements. The $i$-th element specifies the file containint the $i$-th kernel function. ONLY used for TKK.",
+    "prefix": "of_ml_kernel_file"
+  },
+  "of_ml_kernel_scaling": {
+    "body": "of_ml_kernel_scaling 1.0",
+    "description": "Containing nkernel (see [of_ml_nkernel](#of_ml_nkernel)) elements. The $i$-th element specifies the RECIPROCAL of scaling parameter $\\lambda$ of the $i$-th kernel function. $w_i(\\mathbf{r}-\\mathbf{r}'",
+    "prefix": "of_ml_kernel_scaling"
+  },
+  "of_ml_local_test": {
+    "body": "of_ml_local_test False",
+    "description": "FOR TEST. Read in the density, and output the F and Pauli potential.",
+    "prefix": "of_ml_local_test"
+  },
+  "of_ml_nkernel": {
+    "body": "of_ml_nkernel 1",
+    "description": "Number of kernel functions.",
+    "prefix": "of_ml_nkernel"
+  },
+  "of_ml_p": {
+    "body": "of_ml_p False",
+    "description": "Semi-local descriptor: $p(\\mathbf{r}) = \\frac{|\\nabla \\rho(\\mathbf{r})|^2} {[2 (3 \\pi^2)^{1/3} \\rho^{4/3}(\\mathbf{r})]^2}$.",
+    "prefix": "of_ml_p"
+  },
+  "of_ml_pnl": {
+    "body": "of_ml_pnl 0",
+    "description": "Containing nkernel (see [of_ml_nkernel](#of_ml_nkernel)) elements. The $i$-th element controls the non-local descriptor defined by the $i$-th kernel function $w_i(\\mathbf{r}-\\mathbf{r}')$: $p_{\\rm{nl}",
+    "prefix": "of_ml_pnl"
+  },
+  "of_ml_q": {
+    "body": "of_ml_q False",
+    "description": "Semi-local descriptor: $q(\\mathbf{r}) = \\frac{\\nabla^2 \\rho(\\mathbf{r})} {[4 (3 \\pi^2)^{2/3} \\rho^{5/3}(\\mathbf{r})]}$.",
+    "prefix": "of_ml_q"
+  },
+  "of_ml_qnl": {
+    "body": "of_ml_qnl 0",
+    "description": "Containing nkernel (see [of_ml_nkernel](#of_ml_nkernel)) elements. The $i$-th element controls the non-local descriptor defined by the $i$-th kernel function $w_i(\\mathbf{r}-\\mathbf{r}')$: $q_{\\rm{nl}",
+    "prefix": "of_ml_qnl"
+  },
+  "of_ml_tanh_pnl": {
+    "body": "of_ml_tanh_pnl 0",
+    "description": "Containing nkernel (see [of_ml_nkernel](#of_ml_nkernel)) elements. The $i$-th element controls the non-local descriptor defined by the $i$-th kernel function $w_i(\\mathbf{r}-\\mathbf{r}')$: $\\tilde{p_{",
+    "prefix": "of_ml_tanh_pnl"
+  },
+  "of_ml_tanh_qnl": {
+    "body": "of_ml_tanh_qnl 0",
+    "description": "Containing nkernel (see [of_ml_nkernel](#of_ml_nkernel)) elements. The $i$-th element controls the non-local descriptor defined by the $i$-th kernel function $w_i(\\mathbf{r}-\\mathbf{r}')$: $\\tilde{q_{",
+    "prefix": "of_ml_tanh_qnl"
+  },
+  "of_ml_tanhp": {
+    "body": "of_ml_tanhp False",
+    "description": "Semi-local descriptor: $\\tilde{p}(\\mathbf{r}) = \\tanh(\\chi_p p(\\mathbf{r}))$.",
+    "prefix": "of_ml_tanhp"
+  },
+  "of_ml_tanhp_nl": {
+    "body": "of_ml_tanhp_nl 0",
+    "description": "Containing nkernel (see [of_ml_nkernel](#of_ml_nkernel)) elements. The $i$-th element controls the non-local descriptor defined by the $i$-th kernel function $w_i(\\mathbf{r}-\\mathbf{r}')$: $\\tilde{p}_",
+    "prefix": "of_ml_tanhp_nl"
+  },
+  "of_ml_tanhq": {
+    "body": "of_ml_tanhq False",
+    "description": "Semi-local descriptor: $\\tilde{q}(\\mathbf{r}) = \\tanh(\\chi_q q(\\mathbf{r}))$.",
+    "prefix": "of_ml_tanhq"
+  },
+  "of_ml_tanhq_nl": {
+    "body": "of_ml_tanhq_nl 0",
+    "description": "Containing nkernel (see [of_ml_nkernel](#of_ml_nkernel)) elements. The $i$-th element controls the non-local descriptor defined by the $i$-th kernel function $w_i(\\mathbf{r}-\\mathbf{r}')$: $\\tilde{q}_",
+    "prefix": "of_ml_tanhq_nl"
+  },
+  "of_ml_tanhxi": {
+    "body": "of_ml_tanhxi 0",
+    "description": "Containing nkernel (see [of_ml_nkernel](#of_ml_nkernel)) elements. The $i$-th element controls the non-local descriptor defined by the $i$-th kernel function $w_i(\\mathbf{r}-\\mathbf{r}')$: $\\tilde{\\xi",
+    "prefix": "of_ml_tanhxi"
+  },
+  "of_ml_tanhxi_nl": {
+    "body": "of_ml_tanhxi_nl 0",
+    "description": "Containing nkernel (see [of_ml_nkernel](#of_ml_nkernel)) elements. The $i$-th element controls the non-local descriptor defined by the $i$-th kernel function $w_i(\\mathbf{r}-\\mathbf{r}')$: $\\tilde{\\xi",
+    "prefix": "of_ml_tanhxi_nl"
+  },
+  "of_ml_xi": {
+    "body": "of_ml_xi 0",
+    "description": "Containing nkernel (see [of_ml_nkernel](#of_ml_nkernel)) elements. The $i$-th element controls the non-local descriptor defined by the $i$-th kernel function $w_i(\\mathbf{r}-\\mathbf{r}')$: $\\xi(\\mathb",
+    "prefix": "of_ml_xi"
+  },
+  "of_ml_yukawa_alpha": {
+    "body": "of_ml_yukawa_alpha 1.0",
+    "description": "Containing nkernel (see [of_ml_nkernel](#of_ml_nkernel)) elements. The $i$-th element specifies the parameter $\\alpha$ of $i$-th kernel function. ONLY used for Yukawa kernel function.",
+    "prefix": "of_ml_yukawa_alpha"
+  },
+  "of_read_kernel": {
+    "body": "of_read_kernel False",
+    "description": "Whether to read in the kernel file.",
+    "prefix": "of_read_kernel"
+  },
+  "of_tf_weight": {
+    "body": "of_tf_weight 1.0",
+    "description": "Weight of TF KEDF (kinetic energy density functional).",
+    "prefix": "of_tf_weight"
+  },
+  "of_tole": {
+    "body": "of_tole 2e-6",
+    "description": "Tolerance of the energy change for determining the convergence.",
+    "prefix": "of_tole"
+  },
+  "of_tolp": {
+    "body": "of_tolp 1e-5",
+    "description": "Tolerance of potential for determining the convergence.",
+    "prefix": "of_tolp"
+  },
+  "of_vw_weight": {
+    "body": "of_vw_weight 1.0",
+    "description": "Weight of vW KEDF (kinetic energy density functional).",
+    "prefix": "of_vw_weight"
+  },
+  "of_wt_alpha": {
+    "body": "of_wt_alpha $5/6$",
+    "description": "Parameter alpha of WT KEDF (kinetic energy density functional).",
+    "prefix": "of_wt_alpha"
+  },
+  "of_wt_beta": {
+    "body": "of_wt_beta $5/6$",
+    "description": "Parameter beta of WT KEDF (kinetic energy density functional).",
+    "prefix": "of_wt_beta"
+  },
+  "of_wt_rho0": {
+    "body": "of_wt_rho0 0.0",
+    "description": "The average density of system.",
+    "prefix": "of_wt_rho0"
+  },
+  "of_xwm_kappa": {
+    "body": "of_xwm_kappa 0.0",
+    "description": "Parameter $\\kappa$ for XWM kinetic energy functional. See PHYSICAL REVIEW B 100, 205132 (2019) for optimal values.",
+    "prefix": "of_xwm_kappa"
+  },
+  "of_xwm_rho_ref": {
+    "body": "of_xwm_rho_ref 0.0",
+    "description": "Reference charge density for XWM kinetic energy functional. If set to 0, the program will use average charge density.",
+    "prefix": "of_xwm_rho_ref"
+  },
+  "omc": {
+    "body": "omc ${1|0,1,2|}",
+    "description": "The parameter controls the form of occupation matrix control used.",
+    "prefix": "omc"
+  },
+  "onsite_radius": {
+    "body": "onsite_radius 3.0",
+    "description": "- The `Onsite-radius` parameter facilitates modulation of the single-zeta portion of numerical atomic orbitals for projections for DFT+U.",
+    "prefix": "onsite_radius"
+  },
+  "orbital_corr": {
+    "body": "orbital_corr ${1|-1,1,2,3|}",
+    "description": "Specifies which orbits need plus U correction for each atom type ($l_1,l_2,l_3,\\ldots$ for atom type 1, 2, 3, respectively).",
+    "prefix": "orbital_corr"
+  },
+  "orbital_dir": {
+    "body": "orbital_dir \"\"",
+    "description": "The directory to save numerical atomic orbitals.",
+    "prefix": "orbital_dir"
+  },
+  "out_alllog": {
+    "body": "out_alllog False",
+    "description": "Whether to print information into individual logs from all ranks in an MPI run.",
+    "prefix": "out_alllog"
+  },
+  "out_app_flag": {
+    "body": "out_app_flag true",
+    "description": "Whether to output $r(R)$, $H(R)$, $S(R)$, $T(R)$, $dH(R)$, $H(k)$, $S(k)$ and $wfc(k)$ matrices in an append manner during molecular dynamics calculations. Check input parameters [out_mat_r](#out_mat_",
+    "prefix": "out_app_flag"
+  },
+  "out_band": {
+    "body": "out_band False",
+    "description": "Whether to output the eigenvalues of the Hamiltonian matrix (in eV) into the running log during electronic iterations and into a file at the end of calculations. The former can be used with the 'out_f",
+    "prefix": "out_band"
+  },
+  "out_chg": {
+    "body": "out_chg ${1|1,2,-1|}",
+    "description": "The first integer controls whether to output the charge density on real space grids:",
+    "prefix": "out_chg"
+  },
+  "out_current": {
+    "body": "out_current ${1|0,1,2|}",
+    "description": "- 0: Do not output current.",
+    "prefix": "out_current"
+  },
+  "out_current_k": {
+    "body": "out_current_k False",
+    "description": "- True: Output current for each k-points separately.",
+    "prefix": "out_current_k"
+  },
+  "out_dipole": {
+    "body": "out_dipole False",
+    "description": "- True: Output electric dipole moment.",
+    "prefix": "out_dipole"
+  },
+  "out_dmk": {
+    "body": "out_dmk False",
+    "description": "Whether to output the density matrix for each k-point into files in the folder `OUT.${suffix}`. The files are named as:",
+    "prefix": "out_dmk"
+  },
+  "out_dmr": {
+    "body": "out_dmr False",
+    "description": "Whether to output the density matrix with Bravias lattice vector R index into files in the folder `OUT.${suffix}`. The files are named as `dmr{s}{spin index}{g}{geometry index}{_nao} + {\".csr\"}`. Here",
+    "prefix": "out_dmr"
+  },
+  "out_dos": {
+    "body": "out_dos ${1|0,1,2,3|}",
+    "description": "Whether to output the density of states (DOS). For more information, refer to the [dos.md](../elec_properties/dos.md).",
+    "prefix": "out_dos"
+  },
+  "out_eband_terms": {
+    "body": "out_eband_terms False",
+    "description": "Whether to print the band energy terms separately in the file `OUT.${suffix}/${term}_out.dat`. The terms include the kinetic, pseudopotential (local + nonlocal), Hartree and exchange-correlation (incl",
+    "prefix": "out_eband_terms"
+  },
+  "out_efield": {
+    "body": "out_efield False",
+    "description": "Whether to output the electric field data to files. When enabled, writes real-time electric field values (unit: ​​V/Å​​) into files named `efield_[num].txt`, where `[num]` is the ​​sequential index of",
+    "prefix": "out_efield"
+  },
+  "out_element_info": {
+    "body": "out_element_info False",
+    "description": "Whether to print element information into files in the directory `OUT.${suffix}/${element_label}`, including pseudopotential and orbital information of the element (in atomic Ryberg units).",
+    "prefix": "out_element_info"
+  },
+  "out_elf": {
+    "body": "out_elf 0 3",
+    "description": "Whether to output the electron localization function (ELF) in the folder `OUT.${suffix}`. The files are named as",
+    "prefix": "out_elf"
+  },
+  "out_freq_elec": {
+    "body": "out_freq_elec [`scf_nmax`](#scf_nmax)",
+    "description": "Output the charge density (only binary format, controlled by [`out_chg`](#out_chg)), wavefunction (controlled by [`out_wfc_pw`](#out_wfc_pw)) per `out_freq_elec` electronic iterations. Note that they",
+    "prefix": "out_freq_elec"
+  },
+  "out_freq_ion": {
+    "body": "out_freq_ion 0",
+    "description": "Controls the output interval in **ionic steps**. When set to a positive integer $N$, information such as charge density, local potential, electrostatic potential, Hamiltonian matrix, overlap matrix, d",
+    "prefix": "out_freq_ion"
+  },
+  "out_freq_td": {
+    "body": "out_freq_td 0",
+    "description": "Controls the output interval in **completed electronic evolution steps** during RT-TDDFT calculations. When set to a positive integer $N$, detailed information (see [`out_freq_ion`](#out_freq_ion)) is",
+    "prefix": "out_freq_td"
+  },
+  "out_ldos": {
+    "body": "out_ldos ${1|0,1,2,3|}",
+    "description": "Whether to output the local density of states (LDOS), optionally output precision can be set by a second parameter, default is 3.",
+    "prefix": "out_ldos"
+  },
+  "out_level": {
+    "body": "out_level ${1|ie,i,m|}",
+    "description": "Control the output level of information in `OUT.${suffix}/running_${calculation}.log`.",
+    "prefix": "out_level"
+  },
+  "out_mat_dh": {
+    "body": "out_mat_dh False",
+    "description": "Whether to print files containing the derivatives of the Hamiltonian matrix. The format will be the same as the Hamiltonian matrix $H(R)$ and overlap matrix $S(R)$ as mentioned in [out_mat_hs2](#out_m",
+    "prefix": "out_mat_dh"
+  },
+  "out_mat_ds": {
+    "body": "out_mat_ds False",
+    "description": "Whether to print files containing the derivatives of the overlap matrix. The format will be the same as the overlap matrix $dH(R)$ as mentioned in [out_mat_dh](#out_mat_dh). The name of the files will",
+    "prefix": "out_mat_ds"
+  },
+  "out_mat_hs": {
+    "body": "out_mat_hs False 8",
+    "description": "Whether to print the upper triangular part of the Hamiltonian matrices and overlap matrices for each k-point into files in the directory `OUT.${suffix}`. The second number controls precision. For more",
+    "prefix": "out_mat_hs"
+  },
+  "out_mat_hs2": {
+    "body": "out_mat_hs2 False",
+    "description": "Whether to print files containing the Hamiltonian matrix $H(R)$ and overlap matrix $S(R)$ into files in the directory `OUT.${suffix}`. For more information, please refer to [hs_matrix.md](../elec_prop",
+    "prefix": "out_mat_hs2"
+  },
+  "out_mat_l": {
+    "body": "out_mat_l False 8",
+    "description": "Whether to print the expectation value of the angular momentum operator $\\hat{L}_x$, $\\hat{L}_y$, and $\\hat{L}_z$ in the basis of the localized atomic orbitals. The files are named `OUT.${suffix}/${su",
+    "prefix": "out_mat_l"
+  },
+  "out_mat_r": {
+    "body": "out_mat_r False",
+    "description": "Whether to print the matrix representation of the position matrix into a file named `rr.csr` in the directory `OUT.${suffix}`. If [calculation](#calculation) is set to `get_s`, the position matrix can",
+    "prefix": "out_mat_r"
+  },
+  "out_mat_t": {
+    "body": "out_mat_t False",
+    "description": "Generate files containing the kinetic energy matrix $T(R)$. The format will be the same as the Hamiltonian matrix $H(R)$ and overlap matrix $S(R)$ as mentioned in [out_mat_hs2](#out_mat_hs2). The name",
+    "prefix": "out_mat_t"
+  },
+  "out_mat_tk": {
+    "body": "out_mat_tk False \\[8\\]",
+    "description": "Whether to print the upper triangular part of the kinetic matrices for each k-point into `OUT.${suffix}/tks1ki_nao.txt`, where i is the index of k points. One may optionally provide a second parameter",
+    "prefix": "out_mat_tk"
+  },
+  "out_mat_xc": {
+    "body": "out_mat_xc False",
+    "description": "Whether to print the upper triangular part of the exchange-correlation matrices in Kohn-Sham orbital representation: $\\braket{\\psi_i|V_\\text{xc}^\\text{(semi-)local}+V_\\text{exx}+V_\\text{DFTU}|\\psi_j}$",
+    "prefix": "out_mat_xc"
+  },
+  "out_mat_xc2": {
+    "body": "out_mat_xc2 False",
+    "description": "Whether to print the exchange-correlation matrices in numerical orbital representation: $\\braket{\\phi_i|V_\\text{xc}^\\text{(semi-)local}+V_\\text{exx}+V_\\text{DFTU}|\\phi_j}(\\mathbf{R})$ in CSR format in",
+    "prefix": "out_mat_xc2"
+  },
+  "out_mul": {
+    "body": "out_mul False",
+    "description": "Whether to print the Mulliken population analysis result into `OUT.${suffix}/mulliken.txt`. In molecular dynamics calculations, the output frequency is controlled by [out_freq_ion](#out_freq_ion).",
+    "prefix": "out_mul"
+  },
+  "out_ndigits": {
+    "body": "out_ndigits 8",
+    "description": "Controls the length of decimal part of output data, such as charge density, Hamiltonian matrix, Overlap matrix and so on.",
+    "prefix": "out_ndigits"
+  },
+  "out_pchg": {
+    "body": "out_pchg none",
+    "description": "Specifies the electronic states to calculate the charge densities $|\\psi_{i}(\\boldsymbol{r})|^{2}$ with state index $i$ for, using a space-separated string of 0s and 1s. Each digit in the string corre",
+    "prefix": "out_pchg"
+  },
+  "out_pot": {
+    "body": "out_pot ${1|1,2,3|}",
+    "description": "- 1: Output the **total local potential** (i.e., local pseudopotential + Hartree potential + XC potential + external electric field (if exists) + dipole correction potential (if exists) + ...) on real",
+    "prefix": "out_pot"
+  },
+  "out_proj_band": {
+    "body": "out_proj_band False",
+    "description": "Whether to output the projected band structure. For more information, refer to the [band.md](../elec_properties/band.md)",
+    "prefix": "out_proj_band"
+  },
+  "out_ri_cv": {
+    "body": "out_ri_cv false",
+    "description": "Whether to output the coefficient tensor C(R) and ABFs-representation Coulomb matrix V(R) for each atom pair and cell in real space.",
+    "prefix": "out_ri_cv"
+  },
+  "out_spillage": {
+    "body": "out_spillage 0",
+    "description": "This output is only intentively needed by the ABACUS numerical atomic orbital generation workflow. This parameter is used to control whether to output the overlap integrals between truncated spherical",
+    "prefix": "out_spillage"
+  },
+  "out_stru": {
+    "body": "out_stru False",
+    "description": "Whether to output structure files per ionic step in geometry relaxation calculations into `OUT.${suffix}/STRU_ION${istep}_D`, where `${istep}` is the ionic step.",
+    "prefix": "out_stru"
+  },
+  "out_vecpot": {
+    "body": "out_vecpot False",
+    "description": "Output vector potential or not (unit: a.u.).",
+    "prefix": "out_vecpot"
+  },
+  "out_wannier_amn": {
+    "body": "out_wannier_amn ${1|0,1|}",
+    "description": "Write the \"*.amn\" file or not.",
+    "prefix": "out_wannier_amn"
+  },
+  "out_wannier_eig": {
+    "body": "out_wannier_eig ${1|0,1|}",
+    "description": "Write the \"*.eig\" file or not.",
+    "prefix": "out_wannier_eig"
+  },
+  "out_wannier_mmn": {
+    "body": "out_wannier_mmn ${1|0,1|}",
+    "description": "Write the \"*.mmn\" file or not.",
+    "prefix": "out_wannier_mmn"
+  },
+  "out_wannier_unk": {
+    "body": "out_wannier_unk ${1|0,1|}",
+    "description": "Write the \"UNK.*\" file or not.",
+    "prefix": "out_wannier_unk"
+  },
+  "out_wannier_wvfn_formatted": {
+    "body": "out_wannier_wvfn_formatted ${1|0,1|}",
+    "description": "Write the \"UNK.*\" file in ASCII format or binary format.",
+    "prefix": "out_wannier_wvfn_formatted"
+  },
+  "out_wfc_lcao": {
+    "body": "out_wfc_lcao ${1|0,1,gamma-only,non-gamma-only,2|}",
+    "description": "Whether to output the electronic wavefunction coefficients into files and store them in the folder `OUT.${suffix}`. The files are named as `wf{s}{spin index}{k(optional)}{k-point index}{g(optional)}{g",
+    "prefix": "out_wfc_lcao"
+  },
+  "out_wfc_lr (Under Development Feature)": {
+    "body": "out_wfc_lr (Under Development Feature) False",
+    "description": "Whether to output the eigenstates (excitation energy) and eigenvectors (excitation amplitude) of the LR-TDDFT calculation.",
+    "prefix": "out_wfc_lr (Under Development Feature)"
+  },
+  "out_wfc_norm": {
+    "body": "out_wfc_norm none",
+    "description": "Specifies the electronic states to calculate the real-space wave function modulus (norm, or known as the envelope function) $|\\psi_i(\\boldsymbol{r})|$ with state index $i$. The syntax and state select",
+    "prefix": "out_wfc_norm"
+  },
+  "out_wfc_pw": {
+    "body": "out_wfc_pw ${1|0,1,2|}",
+    "description": "Whether to output the electronic wavefunction coefficients into files and store them in the folder `OUT.${suffix}`. The files are named as `wf{k}{k-point index}{s}{spin index}{g}{geometry index}{e}{el",
+    "prefix": "out_wfc_pw"
+  },
+  "out_wfc_re_im": {
+    "body": "out_wfc_re_im none",
+    "description": "Specifies the electronic states to calculate the real and imaginary parts of the wave function $\\text{Re}(\\psi_i(\\boldsymbol{r}))$ and $\\text{Im}(\\psi_i(\\boldsymbol{r}))$ with state index $i$. The syn",
+    "prefix": "out_wfc_re_im"
+  },
+  "out_xc_r": {
+    "body": "out_xc_r ${1|0,1,2,3,4|}",
+    "description": "The first integer controls whether to output the exchange-correlation (in Bohr^-3) on real space grids using Libxc to folder `OUT.${suffix}`:",
+    "prefix": "out_xc_r"
+  },
+  "pexsi_comm": {
+    "body": "pexsi_comm True",
+    "description": "Whether to construct PSelInv communication pattern.",
+    "prefix": "pexsi_comm"
+  },
+  "pexsi_delta_e": {
+    "body": "pexsi_delta_e 20",
+    "description": "Upper bound for the spectral radius of $S^{-1} H$.",
+    "prefix": "pexsi_delta_e"
+  },
+  "pexsi_elec_thr": {
+    "body": "pexsi_elec_thr 0.001",
+    "description": "Stopping criterion of the PEXSI iteration in terms of the number of electrons compared to numElectronExact.",
+    "prefix": "pexsi_elec_thr"
+  },
+  "pexsi_gap": {
+    "body": "pexsi_gap 0",
+    "description": "Spectral gap, this can be set to be 0 in most cases.",
+    "prefix": "pexsi_gap"
+  },
+  "pexsi_inertia": {
+    "body": "pexsi_inertia True",
+    "description": "Whether inertia counting is used at the very beginning.",
+    "prefix": "pexsi_inertia"
+  },
+  "pexsi_method": {
+    "body": "pexsi_method 1",
+    "description": "The pole expansion method to be used. 1 for Cauchy Contour Integral method, 2 for Moussa optimized method.",
+    "prefix": "pexsi_method"
+  },
+  "pexsi_mu": {
+    "body": "pexsi_mu 0",
+    "description": "Initial guess for mu (for the solver).",
+    "prefix": "pexsi_mu"
+  },
+  "pexsi_mu_expand": {
+    "body": "pexsi_mu_expand 0.3",
+    "description": "If the chemical potential is not in the initial interval, the interval is expanded by this value.",
+    "prefix": "pexsi_mu_expand"
+  },
+  "pexsi_mu_guard": {
+    "body": "pexsi_mu_guard 0.2",
+    "description": "Safe guard criterion in terms of the chemical potential to reinvoke the inertia counting procedure.",
+    "prefix": "pexsi_mu_guard"
+  },
+  "pexsi_mu_lower": {
+    "body": "pexsi_mu_lower -10",
+    "description": "Initial guess of lower bound for mu.",
+    "prefix": "pexsi_mu_lower"
+  },
+  "pexsi_mu_thr": {
+    "body": "pexsi_mu_thr 0.05",
+    "description": "Stopping criterion in terms of the chemical potential for the inertia counting procedure.",
+    "prefix": "pexsi_mu_thr"
+  },
+  "pexsi_mu_upper": {
+    "body": "pexsi_mu_upper 10",
+    "description": "Initial guess of upper bound for mu.",
+    "prefix": "pexsi_mu_upper"
+  },
+  "pexsi_nmax": {
+    "body": "pexsi_nmax 80",
+    "description": "Maximum number of PEXSI iterations after each inertia counting procedure.",
+    "prefix": "pexsi_nmax"
+  },
+  "pexsi_npole": {
+    "body": "pexsi_npole 40",
+    "description": "The number of poles used in the pole expansion method, should be a even number.",
+    "prefix": "pexsi_npole"
+  },
+  "pexsi_nproc": {
+    "body": "pexsi_nproc 1",
+    "description": "Number of processors for PARMETIS. Only used if pexsi_ordering == 0.",
+    "prefix": "pexsi_nproc"
+  },
+  "pexsi_nproc_pole": {
+    "body": "pexsi_nproc_pole 1",
+    "description": "The point parallelizaion of PEXSI. Recommend two points parallelization.",
+    "prefix": "pexsi_nproc_pole"
+  },
+  "pexsi_ordering": {
+    "body": "pexsi_ordering 0",
+    "description": "Ordering strategy for factorization and selected inversion. 0: Parallel ordering using ParMETIS, 1: Sequential ordering using METIS, 2: Multiple minimum degree ordering",
+    "prefix": "pexsi_ordering"
+  },
+  "pexsi_row_ordering": {
+    "body": "pexsi_row_ordering 1",
+    "description": "Row permutation strategy for factorization and selected inversion, 0: No row permutation, 1: Make the diagonal entry of the matrix larger than the off-diagonal entries.",
+    "prefix": "pexsi_row_ordering"
+  },
+  "pexsi_storage": {
+    "body": "pexsi_storage True",
+    "description": "Whether to use symmetric storage space used by the Selected Inversion algorithm for symmetric matrices.",
+    "prefix": "pexsi_storage"
+  },
+  "pexsi_symm": {
+    "body": "pexsi_symm True",
+    "description": "Whether the matrix is symmetric.",
+    "prefix": "pexsi_symm"
+  },
+  "pexsi_temp": {
+    "body": "pexsi_temp 0.015",
+    "description": "Temperature in Fermi-Dirac distribution, in Ry, should have the same effect as the smearing sigma when smearing method is set to Fermi-Dirac.",
+    "prefix": "pexsi_temp"
+  },
+  "pexsi_trans": {
+    "body": "pexsi_trans False",
+    "description": "Whether to factorize the transpose of the matrix.",
+    "prefix": "pexsi_trans"
+  },
+  "pexsi_zero_thr": {
+    "body": "pexsi_zero_thr 1e-10",
+    "description": "if the absolute value of CCS matrix element is less than this value, it will be considered as zero.",
+    "prefix": "pexsi_zero_thr"
+  },
+  "pot_file": {
+    "body": "pot_file graph.pb",
+    "description": "The filename of DP/NEP potential files, see [md.md](../md.md#dpmd) in detail.",
+    "prefix": "pot_file"
+  },
+  "precision": {
+    "body": "precision ${1|single,double|}",
+    "description": "Specifies the precision when performing scf calculation.",
+    "prefix": "precision"
+  },
+  "press1": {
+    "body": "press1 0",
+    "description": "The external pressures along three axes. Positive input value is taken as compressive stress.",
+    "prefix": "press1"
+  },
+  "press2": {
+    "body": "press2 0",
+    "description": "The external pressures along three axes. Positive input value is taken as compressive stress.",
+    "prefix": "press2"
+  },
+  "press3": {
+    "body": "press3 0",
+    "description": "The external pressures along three axes. Positive input value is taken as compressive stress.",
+    "prefix": "press3"
+  },
+  "pseudo_dir": {
+    "body": "pseudo_dir \"\"",
+    "description": "The direcotyr of pseudopotential files.",
+    "prefix": "pseudo_dir"
+  },
+  "pseudo_mesh": {
+    "body": "pseudo_mesh ${1|0,1|}",
+    "description": "- 0: Use a mesh for radial integration of pseudopotentials.",
+    "prefix": "pseudo_mesh"
+  },
+  "pseudo_rcut": {
+    "body": "pseudo_rcut 15",
+    "description": "Cut-off of radial integration for pseudopotentials.",
+    "prefix": "pseudo_rcut"
+  },
+  "pw_diag_ndim": {
+    "body": "pw_diag_ndim 4",
+    "description": "Only useful when you use `ks_solver = dav` or `ks_solver = dav_subspace`. It indicates dimension of workspace(number of wavefunction packets, at least 2 needed) for the Davidson method. A larger value",
+    "prefix": "pw_diag_ndim"
+  },
+  "pw_diag_nmax": {
+    "body": "pw_diag_nmax 40",
+    "description": "Only useful when you use `ks_solver = cg/dav/dav_subspace/bpcg`. It indicates the maximal iteration number for cg/david/dav_subspace/bpcg method.",
+    "prefix": "pw_diag_nmax"
+  },
+  "pw_diag_thr": {
+    "body": "pw_diag_thr 0.01",
+    "description": "Only used when you use `ks_solver = cg/dav/dav_subspace/bpcg`. It indicates the threshold for the first electronic iteration, from the second iteration the pw_diag_thr will be updated automatically. *",
+    "prefix": "pw_diag_thr"
+  },
+  "pw_seed": {
+    "body": "pw_seed 0",
+    "description": "Specify the random seed to initialize wave functions. Only positive integers are available.",
+    "prefix": "pw_seed"
+  },
+  "qo_basis (Under Development Feature)": {
+    "body": "qo_basis (Under Development Feature) ${1|pswfc,hydrogen,szv,warning|}",
+    "description": "Specify the type of atomic basis",
+    "prefix": "qo_basis (Under Development Feature)"
+  },
+  "qo_screening_coeff (Under Development Feature)": {
+    "body": "qo_screening_coeff (Under Development Feature) 0.1",
+    "description": "rescale the shape of radial orbitals, available for both `qo_basis hydrogen` and `qo_basis pswfc`. cases but has different meaning.",
+    "prefix": "qo_screening_coeff (Under Development Feature)"
+  },
+  "qo_strategy (Under Development Feature)": {
+    "body": "qo_strategy (Under Development Feature) ${1|minimal-nodeless,minimal-valence,full,energy-full,energy-valence,all,spd,warning|}",
+    "description": "Specify the strategy to generate radial orbitals for each atom type. If one parameter is given, will apply to all atom types. If more than one parameters are given but fewer than number of atom type,",
+    "prefix": "qo_strategy (Under Development Feature)"
+  },
+  "qo_switch (Under Development Feature)": {
+    "body": "qo_switch (Under Development Feature) 0",
+    "description": "Whether to let ABACUS output QO analysis required files",
+    "prefix": "qo_switch (Under Development Feature)"
+  },
+  "qo_thr (Under Development Feature)": {
+    "body": "qo_thr (Under Development Feature) 1.0e-6",
+    "description": "The convergence threshold determining the cutoff of generated orbital. Lower threshold will yield orbital with larger cutoff radius.",
+    "prefix": "qo_thr (Under Development Feature)"
+  },
+  "rdmft (Under Development Feature)": {
+    "body": "rdmft (Under Development Feature) false",
+    "description": "Whether to perform rdmft calculation (reduced density matrix funcional theory)",
+    "prefix": "rdmft (Under Development Feature)"
+  },
+  "rdmft_power_alpha (Under Development Feature)": {
+    "body": "rdmft_power_alpha (Under Development Feature) 0.656",
+    "description": "The alpha parameter of power-functional(or other exx-type/hybrid functionals) which used in RDMFT, g(occ_number) = occ_number^alpha",
+    "prefix": "rdmft_power_alpha (Under Development Feature)"
+  },
+  "read_file_dir": {
+    "body": "read_file_dir OUT.$suffix",
+    "description": "Location of files, such as the electron density (`chgs1.cube`), required as a starting point.",
+    "prefix": "read_file_dir"
+  },
+  "ref_cell_factor": {
+    "body": "ref_cell_factor 1.0",
+    "description": "Construct a reference cell bigger than the initial cell. The reference cell has to be large enough so that the lattice vectors of the fluctuating cell do not exceed the reference lattice vectors durin",
+    "prefix": "ref_cell_factor"
+  },
+  "relax_bfgs_init": {
+    "body": "relax_bfgs_init 0.5",
+    "description": "Initial total displacement of all atoms in the first BFGS step. This sets the scale for the initial movement.",
+    "prefix": "relax_bfgs_init"
+  },
+  "relax_bfgs_rmax": {
+    "body": "relax_bfgs_rmax 0.8",
+    "description": "Maximum allowed total displacement of all atoms during geometry optimization. The sum of atomic displacements can increase during optimization steps but cannot exceed this value.",
+    "prefix": "relax_bfgs_rmax"
+  },
+  "relax_bfgs_rmin": {
+    "body": "relax_bfgs_rmin 1e-5",
+    "description": "Minimum allowed total displacement of all atoms. When the total atomic displacement falls below this value and force convergence is not achieved, the calculation will terminate. **Note**: This paramet",
+    "prefix": "relax_bfgs_rmin"
+  },
+  "relax_bfgs_w1": {
+    "body": "relax_bfgs_w1 0.01",
+    "description": "Controls the Wolfe condition for the Broyden–Fletcher–Goldfarb–Shanno (BFGS) algorithm used in geometry relaxation. This parameter sets the sufficient decrease condition (c1 in Wolfe conditions). For",
+    "prefix": "relax_bfgs_w1"
+  },
+  "relax_bfgs_w2": {
+    "body": "relax_bfgs_w2 0.5",
+    "description": "Controls the Wolfe condition for the Broyden–Fletcher–Goldfarb–Shanno (BFGS) algorithm used in geometry relaxation. This parameter sets the curvature condition (c2 in Wolfe conditions). For more infor",
+    "prefix": "relax_bfgs_w2"
+  },
+  "relax_cg_thr": {
+    "body": "relax_cg_thr 0.5",
+    "description": "When `relax_method` is set to `cg_bfgs`, a mixed algorithm of conjugate gradient (CG) and Broyden–Fletcher–Goldfarb–Shanno (BFGS) is used. The ions first move according to the CG method, then switch t",
+    "prefix": "relax_cg_thr"
+  },
+  "relax_method": {
+    "body": "relax_method ${1|cg,bfgs,lbfgs,cg_bfgs,sd,fire,1|}",
+    "description": "The methods to do geometry optimization. The available algorithms depend on the [relax_new](#relax_new) setting.",
+    "prefix": "relax_method"
+  },
+  "relax_new": {
+    "body": "relax_new True",
+    "description": "Controls which implementation of geometry relaxation to use. At the end of 2022, a new implementation of the Conjugate Gradient (CG) method was introduced for `relax` and `cell-relax` calculations, wh",
+    "prefix": "relax_new"
+  },
+  "relax_nmax": {
+    "body": "relax_nmax 1 for SCF, 50 for relax and cell-relax calcualtions",
+    "description": "The maximal number of ionic iteration steps. If set to 0, the code performs a quick \"dry run\", stopping just after initialization. This is useful to check for input correctness and to have the summary",
+    "prefix": "relax_nmax"
+  },
+  "relax_scale_force": {
+    "body": "relax_scale_force 0.5",
+    "description": "The paramether controls the size of the first conjugate gradient step. A smaller value means the first step along a new CG direction is smaller. This might be helpful for large systems, where it is sa",
+    "prefix": "relax_scale_force"
+  },
+  "restart_load": {
+    "body": "restart_load False",
+    "description": "If [restart_save](#restart_save) is set to true and an electronic iteration is finished, calculations can be restarted from the charge density file, which are saved in the former calculation. Please e",
+    "prefix": "restart_load"
+  },
+  "restart_save": {
+    "body": "restart_save ${1|auto,other|}",
+    "description": "Whether to save charge density files per ionic step, which are used to restart calculations. According to the value of [read_file_dir](#read_file_dir):",
+    "prefix": "restart_save"
+  },
+  "ri_hartree_benchmark (Under Development Feature)": {
+    "body": "ri_hartree_benchmark (Under Development Feature) ${1|aims,abacus,none|}",
+    "description": "Whether to use the localized resolution-of-identity (LRI) approximation for the **Hartree** term of kernel in the $A$ matrix of LR-TDDFT for benchmark (with FHI-aims or another ABACUS calculation). No",
+    "prefix": "ri_hartree_benchmark (Under Development Feature)"
+  },
+  "rpa (Under Development Feature)": {
+    "body": "rpa (Under Development Feature) False",
+    "description": "Generate output files used in rpa calculations.",
+    "prefix": "rpa (Under Development Feature)"
+  },
+  "rpa_ccp_rmesh_times": {
+    "body": "rpa_ccp_rmesh_times 10",
+    "description": "How many times larger the radial mesh required is to that of atomic orbitals in the postprocess calculation of the **bare** Coulomb matrix for RPA, GW, etc.",
+    "prefix": "rpa_ccp_rmesh_times"
+  },
+  "sc_os_ndim": {
+    "body": "sc_os_ndim 5",
+    "description": "To determine the number of old iterations to judge oscillation, it occured,  more accurate lambda with DeltaSpin method would be calculated, only for PW base.",
+    "prefix": "sc_os_ndim"
+  },
+  "scf_ene_thr": {
+    "body": "scf_ene_thr -1.0. If the user does not set this parameter, it will not take effect.",
+    "description": "It's the energy threshold for electronic iteration. It represents the total energy error between two sequential densities from electronic iterations.",
+    "prefix": "scf_ene_thr"
+  },
+  "scf_nmax": {
+    "body": "scf_nmax 100",
+    "description": "This variable indicates the maximal iteration number for electronic iterations.",
+    "prefix": "scf_nmax"
+  },
+  "scf_os_ndim": {
+    "body": "scf_os_ndim `mixing_ndim`",
+    "description": "To determine the number of old iterations' `drho` used in slope calculations.",
+    "prefix": "scf_os_ndim"
+  },
+  "scf_os_stop": {
+    "body": "scf_os_stop ${1|0,1|}",
+    "description": "For systems that are difficult to converge, the SCF process may exhibit oscillations in charge density, preventing further progress toward the specified convergence criteria and resulting in continuou",
+    "prefix": "scf_os_stop"
+  },
+  "scf_os_thr": {
+    "body": "scf_os_thr -0.01",
+    "description": "The slope threshold to determine if the SCF is stuck in a charge density oscillation. If the calculated slope is larger than `scf_os_thr`, stop the SCF.",
+    "prefix": "scf_os_thr"
+  },
+  "scf_thr": {
+    "body": "scf_thr 1.0e-9 (plane-wave basis), or 1.0e-7 (localized atomic orbital basis).",
+    "description": "It's the density threshold for electronic iteration. It represents the charge density error between two sequential densities from electronic iterations. Usually for local orbitals, usually 1e-6 may be",
+    "prefix": "scf_thr"
+  },
+  "scf_thr_type": {
+    "body": "scf_thr_type ${1|1,2|}",
+    "description": "Choose the calculation method of convergence criterion.",
+    "prefix": "scf_thr_type"
+  },
+  "search_radius": {
+    "body": "search_radius -1",
+    "description": "Searching radius in finding the neighbouring atoms. By default the radius will be automatically determined by the cutoffs of orbitals and nonlocal beta projectors.",
+    "prefix": "search_radius"
+  },
+  "seed_sto": {
+    "body": "seed_sto ${1|0,-1|}",
+    "description": "The random seed to generate stochastic orbitals.",
+    "prefix": "seed_sto"
+  },
+  "sigma_k": {
+    "body": "sigma_k 0.6",
+    "description": "The width of the diffuse cavity that is implicitly determined by the electronic structure of the solute",
+    "prefix": "sigma_k"
+  },
+  "smearing_method": {
+    "body": "smearing_method ${1|fixed,mp,mp2,fd|}",
+    "description": "It indicates which occupation and smearing method is used in the calculation.",
+    "prefix": "smearing_method"
+  },
+  "smearing_sigma": {
+    "body": "smearing_sigma 0.015",
+    "description": "Energy range for smearing.",
+    "prefix": "smearing_sigma"
+  },
+  "smearing_sigma_temp": {
+    "body": "smearing_sigma_temp 2 * `smearing_sigma` / kB.",
+    "description": "Energy range for smearing, `smearing_sigma` = 1/2 *kB* `smearing_sigma_temp`.",
+    "prefix": "smearing_sigma_temp"
+  },
+  "soc_lambda": {
+    "body": "soc_lambda 1.0",
+    "description": "Modulates the strength of spin-orbit coupling effect. Sometimes, for some real materials, both scalar-relativistic and full-relativistic pseudopotentials cannot describe the exact spin-orbit coupling.",
+    "prefix": "soc_lambda"
+  },
+  "spillage_outdir": {
+    "body": "spillage_outdir \"./\"",
+    "description": "The directory to save the spillage files.",
+    "prefix": "spillage_outdir"
+  },
+  "stm_bias": {
+    "body": "stm_bias 1.0",
+    "description": "The bias voltage used to calculate local density of states to simulate scanning tunneling microscope, see details in [out_ldos](#out_ldos). When using three parameters:",
+    "prefix": "stm_bias"
+  },
+  "stress_thr": {
+    "body": "stress_thr 0.5",
+    "description": "The threshold of the stress convergence. The threshold is compared with the largest component of the stress tensor.",
+    "prefix": "stress_thr"
+  },
+  "stru_file": {
+    "body": "stru_file STRU",
+    "description": "The name of the structure file.",
+    "prefix": "stru_file"
+  },
+  "suffix": {
+    "body": "suffix ABACUS",
+    "description": "In each run, ABACUS will generate a subdirectory in the working directory. This subdirectory contains all the information of the run. The subdirectory name has the format: OUT.suffix, where the `suffi",
+    "prefix": "suffix"
+  },
+  "symmetry": {
+    "body": "symmetry ${1|-1,0,1|}",
+    "description": "takes value 1, 0 or -1.",
+    "prefix": "symmetry"
+  },
+  "symmetry_autoclose": {
+    "body": "symmetry_autoclose True",
+    "description": "Control how to deal with error in symmetry analysis due to inaccurate lattice parameters or atom positions in STRU file, especially useful when *[calculation](#calculation)==cell-relax*",
+    "prefix": "symmetry_autoclose"
+  },
+  "symmetry_prec": {
+    "body": "symmetry_prec 1.0e-6",
+    "description": "The accuracy for symmetry analysis. Typically, the default value is good enough, but if the lattice parameters or atom positions in STRU file are not accurate enough, this value should be enlarged.",
+    "prefix": "symmetry_prec"
+  },
+  "t_in_h": {
+    "body": "t_in_h ${1|0,1|}",
+    "description": "Specify whether to include kinetic term in obtaining the Hamiltonian matrix.",
+    "prefix": "t_in_h"
+  },
+  "tau": {
+    "body": "tau 1.0798e-05",
+    "description": "The effective surface tension parameter that describes the cavitation, the dispersion, and the repulsion interaction between the solute and the solvent which are not captured by the electrostatic term",
+    "prefix": "tau"
+  },
+  "td_dt": {
+    "body": "td_dt `md_dt / estep_per_md`",
+    "description": "The time step used in electronic propagation. Setting `td_dt` will reset the value of [`md_dt`](#md_dt) to `td_dt * estep_per_md`.",
+    "prefix": "td_dt"
+  },
+  "td_edm": {
+    "body": "td_edm ${1|0,1|}",
+    "description": "Method to calculate the energy-density matrix, mainly affects the calculation of force and stress.",
+    "prefix": "td_edm"
+  },
+  "td_gauss_amp": {
+    "body": "td_gauss_amp 0.25",
+    "description": "Amplitude $A$ of the Gaussian type electric field.",
+    "prefix": "td_gauss_amp"
+  },
+  "td_gauss_freq": {
+    "body": "td_gauss_freq 22.13",
+    "description": "Frequency $f$ of the Gaussian type electric field.",
+    "prefix": "td_gauss_freq"
+  },
+  "td_gauss_phase": {
+    "body": "td_gauss_phase 0.0",
+    "description": "Phase $\\varphi$ of the Gaussian type electric field.",
+    "prefix": "td_gauss_phase"
+  },
+  "td_gauss_sigma": {
+    "body": "td_gauss_sigma 30.0",
+    "description": "Pulse width (standard deviation) $\\sigma$ of the Gaussian type electric field.",
+    "prefix": "td_gauss_sigma"
+  },
+  "td_gauss_t0": {
+    "body": "td_gauss_t0 100",
+    "description": "Step number of the time center $t_0$ of the Gaussian type electric field.",
+    "prefix": "td_gauss_t0"
+  },
+  "td_heavi_amp": {
+    "body": "td_heavi_amp 1.0",
+    "description": "Amplitude $A$ of the Heaviside type electric field.",
+    "prefix": "td_heavi_amp"
+  },
+  "td_heavi_t0": {
+    "body": "td_heavi_t0 100",
+    "description": "Step number of the switch time $t_0$ of the Heaviside type electric field.",
+    "prefix": "td_heavi_t0"
+  },
+  "td_lcut1": {
+    "body": "td_lcut1 0.05",
+    "description": "The lower bound of the interval in the length gauge RT-TDDFT, where $x$ is the fractional coordinate:",
+    "prefix": "td_lcut1"
+  },
+  "td_lcut2": {
+    "body": "td_lcut2 0.95",
+    "description": "The upper bound of the interval in the length gauge RT-TDDFT, where $x$ is the fractional coordinate:",
+    "prefix": "td_lcut2"
+  },
+  "td_print_eij": {
+    "body": "td_print_eij -1",
+    "description": "Controls the printing of Hamiltonian matrix elements $E_{ij}=\\Braket{\\psi_i|\\hat{H}|\\psi_j}$.",
+    "prefix": "td_print_eij"
+  },
+  "td_propagator": {
+    "body": "td_propagator ${1|0,1,2,3|}",
+    "description": "Methods of electronic propagation: $\\psi_{n\\boldsymbol{k}}(\\boldsymbol{r},t_2) = U(t_2,t_1) \\psi_{n\\boldsymbol{k}}(\\boldsymbol{r},t_1)$.",
+    "prefix": "td_propagator"
+  },
+  "td_stype": {
+    "body": "td_stype ${1|0,1,2|}",
+    "description": "Type of electric field in the space domain, i.e. the gauge of the electric field.",
+    "prefix": "td_stype"
+  },
+  "td_tend": {
+    "body": "td_tend 1000",
+    "description": "The final time step when the time-dependent electric field is deactivated. The field remains active between `td_tstart` and `td_tend`.",
+    "prefix": "td_tend"
+  },
+  "td_trape_amp": {
+    "body": "td_trape_amp 2.74",
+    "description": "Amplitude $A$ of the trapezoid type electric field.",
+    "prefix": "td_trape_amp"
+  },
+  "td_trape_freq": {
+    "body": "td_trape_freq 1.60",
+    "description": "Frequency $f$ of the trapezoid type electric field.",
+    "prefix": "td_trape_freq"
+  },
+  "td_trape_phase": {
+    "body": "td_trape_phase 0.0",
+    "description": "Phase $\\varphi$ of the trapezoid type electric field.",
+    "prefix": "td_trape_phase"
+  },
+  "td_trape_t1": {
+    "body": "td_trape_t1 1875",
+    "description": "Step number of the time interval $t_1$ of the trapezoid type electric field.",
+    "prefix": "td_trape_t1"
+  },
+  "td_trape_t2": {
+    "body": "td_trape_t2 5625",
+    "description": "Step number of the time interval $t_2$ of the trapezoid type electric field.",
+    "prefix": "td_trape_t2"
+  },
+  "td_trape_t3": {
+    "body": "td_trape_t3 7500",
+    "description": "Step number of the time interval $t_3$ of the trapezoid type electric field.",
+    "prefix": "td_trape_t3"
+  },
+  "td_trigo_amp": {
+    "body": "td_trigo_amp 2.74",
+    "description": "Amplitude $A$ of the trigonometric type electric field.",
+    "prefix": "td_trigo_amp"
+  },
+  "td_trigo_freq1": {
+    "body": "td_trigo_freq1 1.164656",
+    "description": "Frequency $f_1$ of the trigonometric type electric field.",
+    "prefix": "td_trigo_freq1"
+  },
+  "td_trigo_freq2": {
+    "body": "td_trigo_freq2 0.029116",
+    "description": "Frequency $f_2$ of the trigonometric type electric field.",
+    "prefix": "td_trigo_freq2"
+  },
+  "td_trigo_phase1": {
+    "body": "td_trigo_phase1 0.0",
+    "description": "Phase $\\varphi_1$ of the trigonometric type electric field.",
+    "prefix": "td_trigo_phase1"
+  },
+  "td_trigo_phase2": {
+    "body": "td_trigo_phase2 0.0",
+    "description": "Phase $\\varphi_2$ of the trigonometric type electric field.",
+    "prefix": "td_trigo_phase2"
+  },
+  "td_tstart": {
+    "body": "td_tstart 1",
+    "description": "The initial time step when the time-dependent electric field is activated.",
+    "prefix": "td_tstart"
+  },
+  "td_ttype": {
+    "body": "td_ttype ${1|0,1,2,3|}",
+    "description": "Type of electric field in the time domain.",
+    "prefix": "td_ttype"
+  },
+  "td_vext": {
+    "body": "td_vext False",
+    "description": "- True: Add a laser-material interaction (external electric field).",
+    "prefix": "td_vext"
+  },
+  "td_vext_dire": {
+    "body": "td_vext_dire ${1|1,2,3|}",
+    "description": "Specifies the direction(s) of the external electric field when `td_vext` is enabled. For example, `td_vext_dire 1 2` indicates that external electric fields are applied to both the x and y directions",
+    "prefix": "td_vext_dire"
+  },
+  "test_force": {
+    "body": "test_force ${1|0,1|}",
+    "description": "Specify whether to output the detailed components in forces.",
+    "prefix": "test_force"
+  },
+  "test_skip_ewald": {
+    "body": "test_skip_ewald ${1|0,1|}",
+    "description": "Specify whether to skip the calculation of the ewald energy.",
+    "prefix": "test_skip_ewald"
+  },
+  "test_stress": {
+    "body": "test_stress ${1|0,1|}",
+    "description": "Specify whether to output the detailed components in stress.",
+    "prefix": "test_stress"
+  },
+  "timer_enable_nvtx": {
+    "body": "timer_enable_nvtx False",
+    "description": "Controls whether NVTX profiling labels are emitted by the timer. This feature is only effective on CUDA platforms.",
+    "prefix": "timer_enable_nvtx"
+  },
+  "towannier90": {
+    "body": "towannier90 ${1|1,0|}",
+    "description": "Controls the generation of files for the Wannier90 code.",
+    "prefix": "towannier90"
+  },
+  "uramping": {
+    "body": "uramping -1.0.",
+    "description": "Once `uramping` > 0.15 eV. DFT+U calculations will start SCF with U = 0 eV, namely normal LDA/PBE calculations. Once SCF restarts when `drho<mixing_restart`, U value will increase by `uramping` eV. SC",
+    "prefix": "uramping"
+  },
+  "use_k_continuity": {
+    "body": "use_k_continuity false",
+    "description": "Whether to use k-point continuity for initializing wave functions. When enabled, this strategy exploits the similarity between wavefunctions at neighboring k-points by propagating the wavefunction fro",
+    "prefix": "use_k_continuity"
+  },
+  "vdw_C6_file": {
+    "body": "vdw_C6_file default",
+    "description": "Specifies the name of the file containing $C_6$ parameters for each element when using the D2 method. If not set, ABACUS uses the default $C_6$ parameters (Jnm6/mol) stored in the [program](https://gi",
+    "prefix": "vdw_C6_file"
+  },
+  "vdw_C6_unit": {
+    "body": "vdw_C6_unit Jnm6/mol",
+    "description": "Specifies the unit of the provided $C_6$ parameters in the D2 method. Available options are:",
+    "prefix": "vdw_C6_unit"
+  },
+  "vdw_R0_file": {
+    "body": "vdw_R0_file default",
+    "description": "Specifies the name of the file containing $R_0$ parameters for each element when using the D2 method. If not set, ABACUS uses the default $R_0$ parameters (Angstrom) stored in the [program](https://gi",
+    "prefix": "vdw_R0_file"
+  },
+  "vdw_R0_unit": {
+    "body": "vdw_R0_unit A",
+    "description": "Specifies the unit for the $R_0$ parameters in the D2 method when manually set by the user. Available options are:",
+    "prefix": "vdw_R0_unit"
+  },
+  "vdw_a1": {
+    "body": "vdw_a1 ${1:value}",
+    "description": "This damping function parameter is relevant for D3(0) and D3(BJ) van der Waals (vdW) correction methods. The recommended values of this parameter with different DFT functionals can be found on the [we",
+    "prefix": "vdw_a1"
+  },
+  "vdw_a2": {
+    "body": "vdw_a2 ${1:value}",
+    "description": "This damping function parameter is only relevant for D3(0) and D3(BJ) van der Waals (vdW) correction methods. The recommended values of this parameter with different DFT functionals can be found on th",
+    "prefix": "vdw_a2"
+  },
+  "vdw_abc": {
+    "body": "vdw_abc False",
+    "description": "Determines whether three-body terms are calculated for DFT-D3 methods.",
+    "prefix": "vdw_abc"
+  },
+  "vdw_cn_thr": {
+    "body": "vdw_cn_thr 40",
+    "description": "The cutoff radius when calculating coordination numbers.",
+    "prefix": "vdw_cn_thr"
+  },
+  "vdw_cn_thr_unit": {
+    "body": "vdw_cn_thr_unit Bohr",
+    "description": "Unit of the coordination number cutoff (`vdw_cn_thr`). Available options are:",
+    "prefix": "vdw_cn_thr_unit"
+  },
+  "vdw_cutoff_period": {
+    "body": "vdw_cutoff_period 3 3 3",
+    "description": "The three integers supplied here explicitly specify the extent of the supercell in the directions of the three basis lattice vectors.",
+    "prefix": "vdw_cutoff_period"
+  },
+  "vdw_cutoff_radius": {
+    "body": "vdw_cutoff_radius - 56.6918 if `vdw_method` is set to `d2`\n  - 95 if `vdw_method` is set to `d3_0` or `d3_bj`",
+    "description": "Defines the radius of the cutoff sphere when `vdw_cutoff_type` is set to `radius`. The default values depend on the chosen `vdw_method`.",
+    "prefix": "vdw_cutoff_radius"
+  },
+  "vdw_cutoff_type": {
+    "body": "vdw_cutoff_type ${1|radius,period|}",
+    "description": "Determines the method used for specifying the cutoff radius in periodic systems when applying Van der Waals correction. Available options are:",
+    "prefix": "vdw_cutoff_type"
+  },
+  "vdw_d": {
+    "body": "vdw_d 20",
+    "description": "Controls the damping rate of the damping function in the DFT-D2 method.",
+    "prefix": "vdw_d"
+  },
+  "vdw_method": {
+    "body": "vdw_method ${1|d2,d3_0,d3_bj,none|}",
+    "description": "Specifies the method used for Van der Waals (VdW) correction. Available options are:",
+    "prefix": "vdw_method"
+  },
+  "vdw_radius_unit": {
+    "body": "vdw_radius_unit Bohr",
+    "description": "Specify the unit of `vdw_cutoff_radius`. Available options are:",
+    "prefix": "vdw_radius_unit"
+  },
+  "vdw_s6": {
+    "body": "vdw_s6 - 0.75: if `vdw_method` is set to `d2`",
+    "description": "This scale factor is used to optimize the interaction energy deviations in van der Waals (vdW) corrected calculations. The recommended values of this parameter are dependent on the chosen vdW correcti",
+    "prefix": "vdw_s6"
+  },
+  "vdw_s8": {
+    "body": "vdw_s8 ${1:value}",
+    "description": "This scale factor is relevant for D3(0) and D3(BJ) van der Waals (vdW) correction methods. The recommended values of this parameter with different DFT functionals can be found on the [webpage](https:/",
+    "prefix": "vdw_s8"
+  },
+  "vh_in_h": {
+    "body": "vh_in_h ${1|0,1|}",
+    "description": "Specify whether to include Hartree potential term in obtaining the Hamiltonian matrix.",
+    "prefix": "vh_in_h"
+  },
+  "vion_in_h": {
+    "body": "vion_in_h ${1|0,1|}",
+    "description": "Specify whether to include local ionic potential term in obtaining the Hamiltonian matrix.",
+    "prefix": "vion_in_h"
+  },
+  "vl_in_h": {
+    "body": "vl_in_h ${1|0,1|}",
+    "description": "Specify whether to include local pseudopotential term in obtaining the Hamiltonian matrix.",
+    "prefix": "vl_in_h"
+  },
+  "vnl_in_h": {
+    "body": "vnl_in_h ${1|0,1|}",
+    "description": "Specify whether to include non-local pseudopotential term in obtaining the Hamiltonian matrix.",
+    "prefix": "vnl_in_h"
+  },
+  "wannier_method": {
+    "body": "wannier_method ${1|1,2|}",
+    "description": "Only available on LCAO basis, using different methods to generate \"\\*.mmn\" file and \"\\*.amn\" file.",
+    "prefix": "wannier_method"
+  },
+  "wannier_spin": {
+    "body": "wannier_spin ${1|up,down|}",
+    "description": "The spin direction for the Wannier function calculation when nspin is set to 2",
+    "prefix": "wannier_spin"
+  },
+  "xc_corr_ext": {
+    "body": "xc_corr_ext 130 0.06672455060314922 0.031090690869654895034 1.0",
+    "description": "Customized parameterization on the correlation part of XC functional. The first value should be the LibXC ID of the original functional, and latter values are external parameters. Default values are t",
+    "prefix": "xc_corr_ext"
+  },
+  "xc_exch_ext": {
+    "body": "xc_exch_ext 101 0.8040 0.2195149727645171",
+    "description": "Customized parameterization on the exchange part of XC functional. The first value should be the LibXC ID of the original functional, and latter values are external parameters. Default values are thos",
+    "prefix": "xc_exch_ext"
+  },
+  "xc_kernel (Under Development Feature)": {
+    "body": "xc_kernel (Under Development Feature) LDA",
+    "description": "The exchange-correlation kernel used in the calculation.",
+    "prefix": "xc_kernel (Under Development Feature)"
+  },
+  "xc_temperature": {
+    "body": "xc_temperature 0.0",
+    "description": "Specifies temperature when using temperature-dependent XC functionals (KSDT and so on).",
+    "prefix": "xc_temperature"
+  },
+  "yukawa_lambda": {
+    "body": "yukawa_lambda Calculated on the fly.",
+    "description": "The screen length of Yukawa potential. If left to default, the screen length will be calculated as an average of the entire system. It's better to stick to the default setting unless there is a very g",
+    "prefix": "yukawa_lambda"
+  },
+  "yukawa_potential": {
+    "body": "yukawa_potential False",
+    "description": "Determines whether to use the local screen Coulomb potential method to calculate the values of U and J.",
+    "prefix": "yukawa_potential"
+  },
+  "zgate": {
+    "body": "zgate 0.5",
+    "description": "Position of the charged plate in the unit cell",
+    "prefix": "zgate"
+  }
+}
