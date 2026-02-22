@@ -101,8 +101,6 @@ export function activate(context: vscode.ExtensionContext) {
     reloadCommand,
     checkDataCommand
   );
-
-  diagnoseAllOpenDocuments();
 }
 
 export function deactivate() {
