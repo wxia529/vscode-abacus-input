@@ -10,3 +10,5 @@ out/
 # Logs
 *.log
 npm-debug.log*
+
+input-main.md
