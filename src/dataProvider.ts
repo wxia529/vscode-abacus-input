@@ -30,6 +30,10 @@ export interface Constraint {
   availability?: string;
   mdType?: string;
   section?: string;
+  secondElement?: {
+    enum?: string[];
+    optional?: boolean;
+  };
 }
 
 export interface DiagnosticRule {

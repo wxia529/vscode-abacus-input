@@ -1,6 +1,6 @@
 /**
  * ABACUS INPUT Helper Extension for VSCode
- * Provides intelligent completion, validation, and diagnostics for ABACUS INPUT files
+ * Keyword completion, validation, and diagnostics for ABACUS INPUT files in Visual Studio Code.
  */
 
 import * as vscode from 'vscode';

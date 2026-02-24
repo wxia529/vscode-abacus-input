@@ -120,7 +120,7 @@
     "message": "Note: In the 3.10-LTS version, the file name is Vxc_R_spin$s and so on."
   },
   {
-    "keyword": "rpa (Under Development Feature)",
+    "keyword": "rpa",
     "severity": "info",
     "message": "Note: If [`symmetry`](#symmetry) is set to 1, additional files containing the necessary information for exploiting symmetry in the subsequent rpa calculation will be output:  `irreducible_sector.txt`, `symrot_k.txt` and `symrot_R.txt`"
   },

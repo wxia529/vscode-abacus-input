@@ -209,6 +209,63 @@ export class AbacusDiagnosticProvider {
   ): vscode.Diagnostic[] {
     if (!constraint.enum || constraint.enum.length === 0) return [];
 
+    // Auto-detect two-element vector parameters by mdType pattern
+    // Patterns: "Boolean [Integer](optional)", "Integer [Integer](optional)", "Vector of string"
+    const mdType = constraint.mdType || '';
+    const isTwoElementVector = mdType.includes('[') || mdType.toLowerCase().includes('vector');
+    
+    if (isTwoElementVector) {
+      const parts = value.trim().split(/\s+/);
+      const firstElement = parts[0];
+
+      // Check if first element is valid
+      if (!constraint.enum.includes(firstElement)) {
+        return [this.createDiagnostic(
+          range,
+          `Invalid value '${firstElement}' for '${keyword}'. Allowed values: ${constraint.enum.join(', ')}`,
+          vscode.DiagnosticSeverity.Error,
+          'invalid-enum'
+        )];
+      }
+
+      // Validate second element if present
+      if (parts.length > 1) {
+        const secondElement = parts[1];
+        
+        // Check if second element has specific enum constraints (from constraints.json)
+        if (constraint.secondElement?.enum) {
+          if (!constraint.secondElement.enum.includes(secondElement)) {
+            return [this.createDiagnostic(
+              range,
+              `Invalid second element '${secondElement}' for '${keyword}'. Allowed values: ${constraint.secondElement.enum.join(', ')}`,
+              vscode.DiagnosticSeverity.Error,
+              'invalid-enum'
+            )];
+          }
+          return [];
+        }
+        
+        // Determine expected type for second element from mdType
+        const secondTypeMatch = mdType.match(/\[(\w+)/i);
+        const secondType = secondTypeMatch ? secondTypeMatch[1].toLowerCase() : 'integer';
+        
+        if (secondType === 'integer') {
+          if (!/^-?\d+$/.test(secondElement)) {
+            return [this.createDiagnostic(
+              range,
+              `Invalid second element '${secondElement}' for '${keyword}'. Expected an integer.`,
+              vscode.DiagnosticSeverity.Error,
+              'invalid-enum'
+            )];
+          }
+        } else if (secondType === 'string') {
+          // For string type, no validation needed (any value is acceptable)
+        }
+      }
+
+      return [];
+    }
+
     if (!constraint.enum.includes(value)) {
       return [this.createDiagnostic(
         range,

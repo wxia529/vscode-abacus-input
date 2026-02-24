@@ -2,17 +2,17 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Intelligent completion, validation, and diagnostics for ABACUS INPUT files in Visual Studio Code.
+Keyword completion, validation, and diagnostics for ABACUS INPUT files in Visual Studio Code.
 
 ## Features
 
-This extension provides comprehensive support for editing ABACUS INPUT files:
+This extension provides support for editing ABACUS INPUT files:
 
-- **🎯 Intelligent Completion** - Context-aware keyword and value completion
-- **✅ Validation & Diagnostics** - Real-time error detection and parameter validation
-- **📖 Hover Documentation** - Instant keyword documentation on hover
-- **🎨 Syntax Highlighting** - Full syntax highlighting for INPUT files
-- **📝 Code Snippets** - Pre-defined snippets for common ABACUS parameters
+- **🎯 Keyword Completion** - Keyword and value completion based on ABACUS documentation
+- **✅ Validation & Diagnostics** - Error detection and parameter validation
+- **📖 Hover Documentation** - Keyword documentation on hover
+- **🎨 Syntax Highlighting** - Syntax highlighting for INPUT files
+- **📝 Code Snippets** - Quick insertion for common ABACUS parameters
 
 ## Installation
 
@@ -37,7 +37,7 @@ The extension automatically activates when:
 
 | Setting | Default | Description |
 |---------|---------|-------------|
-| `abacusInput.completion.enabled` | `true` | Enable intelligent completion |
+| `abacusInput.completion.enabled` | `true` | Enable completion |
 | `abacusInput.diagnostics.enabled` | `true` | Enable validation and diagnostics |
 | `abacusInput.hover.enabled` | `true` | Enable hover documentation |
 | `abacusInput.dataPath` | `""` | Custom path to ABACUS JSON data files |
@@ -82,6 +82,7 @@ vscode-abacus-input/
 ├── syntaxes/               # TextMate grammar for syntax highlighting
 ├── snippets/               # Code snippets
 ├── data/                   # JSON data files for completion
+├── language-configuration.json
 └── package.json            # Extension manifest
 ```
 

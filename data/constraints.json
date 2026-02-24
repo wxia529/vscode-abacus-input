@@ -571,6 +571,10 @@
     "availability": "",
     "default": "false",
     "description": "If `TRUE`, the smooth threshold strategy, which applies a larger threshold (10e-5) for the empty states, will be implemented in the diagonalization methods. (This strategy should not affect total energy, forces, and other ground-state properties, but computational efficiency will be improved.) If `FALSE`, the smooth threshold strategy will not be applied.",
+    "enum": [
+      "True",
+      "False"
+    ],
     "mdType": "bool",
     "section": "Plane wave related variables",
     "type": "boolean",
@@ -585,10 +589,14 @@
     "type": "boolean",
     "unit": ""
   },
-  "dm_to_rho (Under Development Feature)": {
+  "dm_to_rho": {
     "availability": "Numerical atomic orbital basis",
     "default": "False",
-    "description": "Reads density matrix $DM(R)$ in npz format and creates electron density on grids. This feature does not work for gamma-only calculations. Only supports serial calculations.",
+    "description": "(Under Development Feature) Reads density matrix $DM(R)$ in npz format and creates electron density on grids. This feature does not work for gamma-only calculations. Only supports serial calculations.",
+    "enum": [
+      "True",
+      "False"
+    ],
     "mdType": "Boolean",
     "section": "Output information",
     "type": "boolean",
@@ -1703,16 +1711,14 @@
   },
   "md_pmode": {
     "availability": "",
-    "default": "iso\n0 -->",
-    "description": "Specify the cell fluctuation mode in NPT ensemble based on the Nose-Hoover style non-Hamiltonian equations of motion.\n  - iso: The three diagonal elements of the lattice are fluctuated isotropically.\n  - aniso: The three diagonal elements of the lattice are fluctuated anisotropically.\n  - tri: The lattice must be a lower-triangular matrix, and all six freedoms are fluctuated.\nDetermine the precision level of variable-cell molecular dynamics calculations.\n  - 0: FFT grids do not change, only G vectors and K vectors are changed due to the change of lattice vector. This level is suitable for cases where the variation of the volume and shape is not large, and the efficiency is relatively higher.\n  - 2: FFT grids change per step. This level is suitable for cases where the variation of the volume and shape is large, such as the MSST method. However, accuracy comes at the cost of efficiency.",
+    "default": "iso",
+    "description": "Specify the cell fluctuation mode in NPT ensemble based on the Nose-Hoover style non-Hamiltonian equations of motion.\n  - iso: The three diagonal elements of the lattice are fluctuated isotropically.\n  - aniso: The three diagonal elements of the lattice are fluctuated anisotropically.\n  - tri: The lattice must be a lower-triangular matrix, and all six freedoms are fluctuated.\n\n\n**Default:** iso\n\n\n**Relavent**: [md_tfreq](#md_tfreq), [md_tchain](#md_tchain), [md_pcouple](#md_pcouple), [md_pfreq](#md_pfreq), and [md_pchain](#md_pchain).",
     "enum": [
       "iso",
       "aniso",
-      "tri",
-      "0",
-      "2"
+      "tri"
     ],
-    "mdType": "String\nInteger",
+    "mdType": "String",
     "section": "Molecular dynamics",
     "type": "string",
     "unit": ""
@@ -1900,6 +1906,10 @@
     "availability": "Only for `mixing_restart>=0.0`",
     "default": "false",
     "description": "At n-th iteration which is calculated by `drho<mixing_restart`, SCF will start a mixing for real-space density matrix by using the same coefficiences as the mixing of charge density.",
+    "enum": [
+      "True",
+      "False"
+    ],
     "mdType": "bool",
     "section": "Electronic structure",
     "type": "boolean",
@@ -2290,7 +2300,12 @@
   "of_full_pw_dim": {
     "availability": "OFDFT with `of_full_pw = True`",
     "default": "0",
-    "description": "Specify the parity of FFT dimensions.",
+    "description": "Specify the parity of FFT dimensions.\n  - **0**: either odd or even.\n  - **1**: odd only.\n  - **2**: even only.",
+    "enum": [
+      "0",
+      "1",
+      "2"
+    ],
     "mdType": "Integer",
     "section": "OFDFT: orbital free density functional theory",
     "type": "integer",
@@ -2317,7 +2332,18 @@
   "of_kinetic": {
     "availability": "OFDFT",
     "default": "wt",
-    "description": "The type of KEDF (kinetic energy density functional).\n\n  Analytical functionals:",
+    "description": "The type of KEDF (kinetic energy density functional).\n\n  Analytical functionals:\n  - **wt**: Wang-Teter.\n  - **tf**: Thomas-Fermi.\n  - **vw**: von Weizsäcker.\n  - **tf+**: TF $\\rm{\\lambda}$ vW, the parameter $\\rm{\\lambda}$ can be set by `of_vw_weight`.\n  - **lkt**: Luo-Karasiev-Trickey.\n  - **xwm**: Xu-Wang-Ma\n\n  Machine learning (ML) based functionals:\n  - **ml**: ML-based KEDF allows for greater flexibility, enabling users to set related ML model parameters themselves.\n  - **mpn**: ML-based Physically-constrained Non-local (MPN) KEDF. ABACUS automatically configures the necessary parameters, requiring no manual intervention from the user.\n  - **cpn5**: Multi-Channel MPN (CPN) KEDF with 5 channels. Similar to mpn, ABACUS handles all parameter settings automatically.",
+    "enum": [
+      "wt",
+      "tf",
+      "vw",
+      "tf+",
+      "lkt",
+      "xwm",
+      "ml",
+      "mpn",
+      "cpn5"
+    ],
     "mdType": "String",
     "section": "OFDFT: orbital free density functional theory",
     "type": "string",
@@ -2344,7 +2370,12 @@
   "of_method": {
     "availability": "OFDFT",
     "default": "tn",
-    "description": "The optimization method used in OFDFT.",
+    "description": "The optimization method used in OFDFT.\n  - **cg1**: Polak-Ribiere. Standard CG algorithm.\n  - **cg2**: Hager-Zhang (generally faster than cg1).\n  - **tn**: Truncated Newton algorithm.",
+    "enum": [
+      "cg1",
+      "cg2",
+      "tn"
+    ],
     "mdType": "String",
     "section": "OFDFT: orbital free density functional theory",
     "type": "string",
@@ -2787,6 +2818,10 @@
     "availability": "",
     "default": "False",
     "description": "Whether to output the eigenvalues of the Hamiltonian matrix (in eV) into the running log during electronic iterations and into a file at the end of calculations. The former can be used with the 'out_freq_elec' parameter while the latter option allows the output precision to be set via a second parameter, with a default value of 8. The output file names are:\n    - nspin = 1 or 4: `eig.txt`;\n    - nspin = 2: `eigs1.txt` and `eigs2.txt`;\n    - For more information, refer to the [band.md](../elec_properties/band.md)",
+    "enum": [
+      "True",
+      "False"
+    ],
     "mdType": "Boolean \\[Integer\\](optional)",
     "section": "Output information",
     "type": "string",
@@ -2843,6 +2878,10 @@
     "availability": "Numerical atomic orbital basis",
     "default": "False",
     "description": "Whether to output the density matrix for each k-point into files in the folder `OUT.${suffix}`. The files are named as:\n  - For gamma only case:\n    - nspin = 1 and 4: `dm_nao.csr`;\n    - nspin = 2: `dms1_nao.csr` and `dms2_nao.csr` for the two spin channels.\n  - For multi-k points case:\n    - nspin = 1 and 4: `dmk1_nao.csr`, `dmk2_nao.csr`, ...;\n    - nspin = 2: `dmk1s1_nao.csr`... and `dmk1s2_nao.csr`... for the two spin channels.",
+    "enum": [
+      "True",
+      "False"
+    ],
     "mdType": "Boolean \\[Integer\\](optional)",
     "section": "Output information",
     "type": "string",
@@ -2852,6 +2891,10 @@
     "availability": "Numerical atomic orbital basis (multi-k points)",
     "default": "False",
     "description": "Whether to output the density matrix with Bravias lattice vector R index into files in the folder `OUT.${suffix}`. The files are named as `dmr{s}{spin index}{g}{geometry index}{_nao} + {\".csr\"}`. Here, 's' refers to spin, where s1 means spin up channel while s2 means spin down channel, and the sparse matrix format 'csr' is mentioned in [out_mat_hs2](#out_mat_hs2). Finally, if [out_app_flag](#out_app_flag) is set to false, the file name contains the optional 'g' index for each ionic step that may have different geometries, and if [out_app_flag](#out_app_flag) is set to true, the density matrix with respect to Bravias lattice vector R accumulates during ionic steps:\n  - nspin = 1: `dmrs1_nao.csr`;\n  - nspin = 2: `dmrs1_nao.csr` and `dmrs2_nao.csr` for the two spin channels.",
+    "enum": [
+      "True",
+      "False"
+    ],
     "mdType": "Boolean \\[Integer\\](optional)",
     "section": "Output information",
     "type": "string",
@@ -2988,6 +3031,10 @@
     "availability": "Numerical atomic orbital basis",
     "default": "False 8",
     "description": "Whether to print the upper triangular part of the Hamiltonian matrices and overlap matrices for each k-point into files in the directory `OUT.${suffix}`. The second number controls precision. For more information, please refer to [hs_matrix.md](../elec_properties/hs_matrix.md#out_mat_hs). Also controled by [out_freq_ion](#out_freq_ion) and [out_app_flag](#out_app_flag).\n  - For gamma only case:\n    - nspin = 1: `hks1_nao.txt` for the Hamiltonian matrix and `sks1_nao.txt` for the overlap matrix;\n    - nspin = 2: `hks1_nao.txt` and `hks2_nao.txt` for the Hamiltonian matrix and `sks1_nao.txt` for the overlap matrix. Note that the code will not output `sks2_nao.txt` because it is the same as `sks1_nao.txt`;\n    - nspin = 4: `hks12_nao.txt` for the Hamiltonian matrix and `sks12_nao.txt` for the overlap matrix.\n  - For multi-k points case:\n    - nspin = 1: `hks1k1_nao.txt` for the Hamiltonian matrix at the 1st k-point, and `sks1k1_nao.txt` for the overlap matrix for the 1st k-point, ...;\n    - nspin = 2: `hks1k1_nao.txt` and `hks2k1_nao.txt` for the two spin channels of the Hamiltonian matrix at the 1st k-point, and `sks1k1_nao.txt` for the overlap matrix for the 1st k-point. Note that the code will not output `sks2k1_nao.txt` because it is the same as `sks1k1_nao.txt`, ...;\n    - nspin = 4: `hks12k1_nao.txt` for the Hamiltonian matrix at the 1st k-point, and `sks12k1_nao.txt` for the overlap matrix for the 1st k-point, ...;",
+    "enum": [
+      "True",
+      "False"
+    ],
     "mdType": "Boolean \\[Integer\\](optional)",
     "section": "Output information",
     "type": "string",
@@ -3006,9 +3053,13 @@
     "availability": "Numerical atomic orbital (NAO) basis",
     "default": "False 8",
     "description": "Whether to print the expectation value of the angular momentum operator $\\hat{L}_x$, $\\hat{L}_y$, and $\\hat{L}_z$ in the basis of the localized atomic orbitals. The files are named `OUT.${suffix}/${suffix}_Lx.dat`, `OUT.${suffix}/${suffix}_Ly.dat`, and `OUT.${suffix}/${suffix}_Lz.dat`. The second integer controls the precision of the output.",
+    "enum": [
+      "True",
+      "False"
+    ],
     "mdType": "Boolean [Integer\\](optional)",
     "section": "Output information",
-    "type": "boolean",
+    "type": "string",
     "unit": ""
   },
   "out_mat_r": {
@@ -3795,7 +3846,7 @@
     "dependencies": {
       "relax_new": false
     },
-    "description": "The methods to do geometry optimization. The available algorithms depend on the [relax_new](#relax_new) setting.\n\n  **First element** (algorithm selection):\n  - `cg`: Conjugate gradient (CG) algorithm. Available for both `relax_new = True` (default, simultaneous optimization) and `relax_new = False` (nested optimization). See [relax_new](#relax_new) for implementation details.\n  - `bfgs`: Broyden–Fletcher–Goldfarb–Shanno (BFGS) quasi-Newton algorithm. **Only available when `relax_new = False`**.\n  - `lbfgs`: Limited-memory BFGS algorithm, suitable for large systems. **Only available when `relax_new = False`**.\n  - `cg_bfgs`: Mixed method starting with CG and switching to BFGS when force convergence reaches [relax_cg_thr](#relax_cg_thr). **Only available when `relax_new = False`**.\n  - `sd`: Steepest descent algorithm. **Only available when `relax_new = False`**. Not recommended for production use.\n  - `fire`: Fast Inertial Relaxation Engine method, a molecular-dynamics-based relaxation algorithm. Use by setting [calculation](#calculation) to `md` and [md_type](#md_type) to `fire`. Ionic velocities must be set in STRU file. See [fire](../md.md#fire) for details.\n\n  **Second element** (BFGS variant, only when first element is `bfgs`):\n  - `1`: Traditional BFGS that updates the Hessian matrix B and then inverts it.\n  - `2` or omitted: Default BFGS that directly updates the inverse Hessian (recommended).",
+    "description": "The methods to do geometry optimization. The available algorithms depend on the [relax_new](#relax_new) setting.\n\n  **First element** (algorithm selection):\n  - `cg`: Conjugate gradient (CG) algorithm. Available for both `relax_new = True` (default, simultaneous optimization) and `relax_new = False` (nested optimization). See [relax_new](#relax_new) for implementation details.\n  - `bfgs`: Broyden–Fletcher–Goldfarb–Shanno (BFGS) quasi-Newton algorithm. **Only available when `relax_new = False`**.\n  - `lbfgs`: Limited-memory BFGS algorithm, suitable for large systems. **Only available when `relax_new = False`**.\n  - `cg_bfgs`: Mixed method starting with CG and switching to BFGS when force convergence reaches [relax_cg_thr](#relax_cg_thr). **Only available when `relax_new = False`**.\n  - `sd`: Steepest descent algorithm. **Only available when `relax_new = False`**. Not recommended for production use.\n  - `fire`: Fast Inertial Relaxation Engine method, a molecular-dynamics-based relaxation algorithm. Use by setting [calculation](#calculation) to `md` and [md_type](#md_type) to `fire`. Ionic velocities must be set in STRU file. See [fire](../md.md#fire) for details.\n\n  **Second element** (BFGS variant, only when first element is `bfgs`):\n  - `1`: Traditional BFGS that updates the Hessian matrix B and then inverts it.\n  - `2` or omitted: Default BFGS that directly updates the inverse Hessian (recommended).\n\n\n**Note:** In the 3.10-LTS version, the type of this parameter is std::string. It can be set to \"cg\", \"bfgs\", \"cg_bfgs\", \"bfgs_trad\", \"lbfgs\", \"sd\", \"fire\".",
     "enum": [
       "cg",
       "bfgs",
@@ -3803,8 +3854,12 @@
       "cg_bfgs",
       "sd",
       "fire",
-      "1"
+      "bfgs_trad"
     ],
+    "secondElement": {
+      "enum": ["1", "2"],
+      "optional": true
+    },
     "mdType": "Vector of string",
     "section": "Geometry relaxation",
     "type": "string",
@@ -3849,10 +3904,10 @@
   "restart_save": {
     "availability": "Numerical atomic orbital basis",
     "default": "False",
-    "description": "Whether to save charge density files per ionic step, which are used to restart calculations. According to the value of [read_file_dir](#read_file_dir):\n  - auto: These files are saved in folder `OUT.${suffix}/restart/`;\n  - other: These files are saved in folder `${read_file_dir}/restart/`.\n\n  If EXX(exact exchange) is calculated (i.e. *[dft_fuctional](#dft_functional)==hse/hf/pbe0/scan0* or *[rpa](#rpa)==True*), the Hexx(R) files for each processor will also be saved in the above folder, which can be read in EXX calculation with *[restart_load](#restart_load)==True*.",
+    "description": "Whether to save charge density files per ionic step, which are used to restart calculations. According to the value of [read_file_dir](#read_file_dir):\n  - True: These files are saved in folder `OUT.${suffix}/restart/`;\n  - False: These files are saved in folder `${read_file_dir}/restart/`.\n\n  If EXX(exact exchange) is calculated (i.e. *[dft_fuctional](#dft_functional)==hse/hf/pbe0/scan0* or *[rpa](#rpa)==True*), the Hexx(R) files for each processor will also be saved in the above folder, which can be read in EXX calculation with *[restart_load](#restart_load)==True*.",
     "enum": [
-      "auto",
-      "other"
+      "True",
+      "False"
     ],
     "mdType": "Boolean",
     "section": "Output information",
@@ -3873,10 +3928,14 @@
     "type": "string",
     "unit": ""
   },
-  "rpa (Under Development Feature)": {
+  "rpa": {
     "availability": "",
     "default": "False",
-    "description": "Generate output files used in rpa calculations.",
+    "description": "(Under Development Feature) Generate output files used in rpa calculations.",
+    "enum": [
+      "True",
+      "False"
+    ],
     "mdType": "Boolean",
     "section": "Output information",
     "type": "boolean",
@@ -4535,6 +4594,10 @@
     "availability": "`vdw_C6_file` is not default",
     "default": "Jnm6/mol",
     "description": "Specifies the unit of the provided $C_6$ parameters in the D2 method. Available options are:\n  - `Jnm6/mol` (J·nm^6/mol)\n  - `eVA` (eV·Angstrom)",
+    "enum": [
+      "Jnm6/mol",
+      "eVA"
+    ],
     "mdType": "String",
     "section": "vdW correction",
     "type": "string",
@@ -4553,6 +4616,10 @@
     "availability": "`vdw_R0_file` is not default",
     "default": "A",
     "description": "Specifies the unit for the $R_0$ parameters in the D2 method when manually set by the user. Available options are:\n  - `A` (Angstrom)\n  - `Bohr`",
+    "enum": [
+      "A",
+      "Bohr"
+    ],
     "mdType": "String",
     "section": "vdW correction",
     "type": "string",
