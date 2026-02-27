@@ -7,7 +7,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.1] - 2026-02-24
 
-### Fixed
 - **relax_method**: Fixed validation for two-element vector values (e.g., "cg 1", "bfgs 2"). 
 - **Two-element vector parameters**: Implemented **fully generic validation logic** that auto-detects two-element vectors by `mdType` pattern and reads constraints from JSON:
   - Automatically recognizes patterns: `"Boolean [Integer](optional)"`, `"Integer [Integer](optional)"`, `"Vector of string"`
